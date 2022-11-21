@@ -1,0 +1,22 @@
+{
+  "name": "js-work-final",
+  "version": "1.0.0",
+  "description": "-[x] 環境建立\r     - [x] 調整版型結構\r     - [x] 建立 SCSS 和 JS 結構(前、後台)\r     - [x] 載入套件資源(bootstrap、axios、C3.js...)\r     - [x] API config 設定確認\r -[ ] 前台開發\r     - [x] 串接產品 API 流程設計\r          -[x] 取得產品列表\r          -[]\r     - [x] 串接購物車 API 流程設計\r     - [ ] 串接建立訂單 API 流程設計\r -[ ] 後台開發\r     - [ ] 訂單列表設計\r     - [ ] C3.js 圖表設計",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimmyFang-ai/js-finalWork-wowoRoom.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jimmyFang-ai/js-finalWork-wowoRoom/issues"
+  },
+  "homepage": "https://github.com/jimmyFang-ai/js-finalWork-wowoRoom#readme",
+  "dependencies": {
+    "axios": "^1.1.3"
+  }
+}

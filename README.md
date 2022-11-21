@@ -1,28 +1,33 @@
 
-[VALIDATE.JS](https://validatejs.org/#validators-date)
 
-[C3.js](https://c3js.org/gettingstarted.html#generate)
-
-# Generate Chart
-
-圖表顯示要綁定的DOM 
-```html
-<div id="chart"></div>
-```
-
-```jsx
-let  chart = c3.generate({
-    bindto: '#chart', // 對應 html的 id=chart DOM 元素
-    data: {           // 存放資料的地方
-      columns: [      
-        ['data1', 30, 200, 100, 400, 150, 250],
-        ['data2', 50, 20, 10, 40, 15, 25]
-      ]
-    },
-    types: {        // 圖表類型 預設為折線圖
-        data2: 'bar'  // 更改 data2 為 長條圖
-    }
-});
-```
+# wowoRoom 傢俱電商
 
 
+## 開發流程
+-[x] 環境建立
+    - [x] 調整版型結構
+    - [x] 建立 SCSS 和 JS 結構(前、後台)
+    - [x] 載入套件資源(bootstrap、axios、C3.js...)
+    - [x] API config 設定確認
+-[ ] 前台開發
+    - [x] 串接產品 API 流程設計
+         -[x] 取得產品列表
+         -[]
+    - [x] 串接購物車 API 流程設計
+    - [ ] 串接建立訂單 API 流程設計
+-[ ] 後台開發
+    - [ ] 訂單列表設計
+    - [ ] C3.js 圖表設計
+
+-[ ] 優化細節
+    - [ ] 使用者體驗
+    - [x] 千分位設計
+    - [x] 計算總金額
+    - [ ] 表單驗證
+
+
+## 使用套件
+- [C3.js](https://c3js.org/)
+- [axios](https://github.com/axios/axios)
+- [validate.js](https://validatejs.org/)
+- [sweetalert2](https://sweetalert2.github.io/)

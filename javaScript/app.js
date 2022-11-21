@@ -1,4 +1,5 @@
 
+
 // DOM
 // 產品列表
 const productWrap = document.querySelector('.productWrap');
@@ -7,10 +8,6 @@ const productSelect = document.querySelector('.productSelect');
 // 購物車列表
 const cartsList = document.querySelector('#shoppingCart-list');
 
-
-
-// API基本路徑
-let baseUrl = "https://livejs-api.hexschool.io";
 
 // 儲存遠端資料
 let productsData = [];
@@ -27,24 +24,12 @@ function init() {
 init();
 
 
-// util 工具
-// 數字轉換千分位函式
-function tothousands(num) {
-    let parts = num.toString().split('.');
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    return parts.join('.');
-};
-
-// 計算總金額
-function calcTotalPrice(data) {
-    return tothousands(data.reduce((acc, cur) => acc + cur, 0));
-};
 
 
 // 資料處理
 // 產品 -  取得產品列表
 function getProducts() {
-    axios.get(`${baseUrl}/api/livejs/v1/customer/jimmyji/products`)
+    axios.get(`${baseUrl}/api/livejs/v1/customer/${api_path}/products`)
         .then((res) => {
             productsData = res.data.products;
             renderProductsList(productsData);
@@ -95,11 +80,9 @@ productSelect.addEventListener('click', (e) => {
 });
 
 
-
-
 // 購物車 - 取得購物車列表
 function getCarts() {
-    axios.get(`${baseUrl}/api/livejs/v1/customer/jimmyji/carts`)
+    axios.get(`${baseUrl}/api/livejs/v1/customer/${api_path}/carts`)
         .then((res) => {
             cartsData = res.data.carts;
             renderCartsList(cartsData);
