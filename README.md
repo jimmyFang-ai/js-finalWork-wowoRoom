@@ -1,3 +1,6 @@
+
+[VALIDATE.JS](https://validatejs.org/#validators-date)
+
 [C3.js](https://c3js.org/gettingstarted.html#generate)
 
 # Generate Chart
@@ -23,7 +26,3 @@ let  chart = c3.generate({
 ```
 
 
-[VALIDATE.JS](https://validatejs.org/#validators-date)
-
-"# js-finalWork-wowoRoom" 
-"# js-finalWork-wowoRoom" 
