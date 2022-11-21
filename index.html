@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 直播班最終作業 - wowoRoom 傢俱電商(前台) </title>
+
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Load c3.css -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./stylesheet/all.css">
+</head>
+
+<body>
+
+    <nav class="topBar">
+        <div class="wrap">
+            <h1><a href="#" class="logo">WOWOROOM</a></h1>
+            <span class="material-icons menuToggle">
+                menu
+            </span>
+            <ul class="topBar-menu">
+                <li><a href="#bedAdvantage">床墊優勢</a></li>
+                <li><a href="#recommendation">好評推薦</a></li>
+                <li><a href="#transport">運送方式</a></li>
+                <li><a href="#orderInfo">立即預訂</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="wrap" id="bedAdvantage">
+        <div class="banner">
+            <h2 class="banner-text">窩窩家居<br>跟您一起品味生活</h2>
+        </div>
+        <h3 class="section-title">床墊優勢</h3>
+        <ul class="bedAdvantage">
+            <li>
+                <img class="bedAdvantage-img" src="https://lh3.googleusercontent.com/pw/AL9nZEWyvFWNycVwyxxTg02b0FjuHsXqwwTEq79HkiOMaUkUHJnLk03I4ofupeJHXAn-h5bec6b7WcVGfg6MFbk25claW3OqacODv2vvbtP4cS3nwApThCg2wxTjZe_cVgKz7V0OROfwKczVMqf4foPBJdB3iQ46KSRYn4TzoKRFDIi7kB1fVIxtXV0ZhqP4cZUkl8x_m3KfSnC9uPFwizBenk520fgmWF4XcOvFwJNl9ljspeFt9XY-7kwJudE2g6R2gFq_9fd9WRd4oPJ68NvqTHSlclskPAmAn053fTz5pF-PtGGLUuZQLfXfEMbfemcWenFmPmssNWH__Gd66dPOfH3tPXLj3zWTWMLvcJke9hPaYtdakKSpjkhoYC7wHxPbxsme9lRBjCSz_QIgpjw8n1blEGGM2b9-1IEdnsjKq7lgSJ4UpHAkvZeKtPGN9bv-gIuvUomA5VYXE95X7otnXSHKilg-pqYjJaSNpJEcL0y7XR6z8oJJRbJ7bLAI_ZQRSN5vHxI7BWn-m7m9akaY6ohYuCy-i1MXcDT7QYXhBLl9QPFQHIFhOZkojXIglK_GIpEtjIUnxmlAFjYyxTVDaD3OerRoBFARztcRIrkOzUnIDPr5TH1kyoUy6ShxKEzXOcEyMcW65RbJlGY0bLJlqshzur7NKG26ffPU4hcBTAyTfeP6lBym-GXpAdmUVNz40jdyB97S5j5WPIlADCdiQGO0PoSd4NELn99ztvbbZlWO-LaQ_fkRQh_IpxptWQk4LogVsQM7-LkK9nXU1zEw1l0pNe118gatq1AMFSyLNvD6BWkfIAzj6GrCBwfmaetMYNXIg2dqRbG12V34x9geUyy4-HTe1rTEpNDOlIxg4EMaylzfCrMzMssYOxiDJAFE9NyPy6DhpIRXg9Ep-nHqWnc7KE4jsMjwjhw5HUwWgaBxXmjVTy6EHYd_7EcdoUu1pKYwe6cWFXuampIIjJofhB7bvskWX0U=w350-h140-no?authuser=0" alt="原木料環保">
+                <p class="bedAdvantage-text">原木料環保</p>
+            </li>
+            <li>
+                <img class="bedAdvantage-img" src="https://lh3.googleusercontent.com/pw/AL9nZEXxs2rwrqxoj4BzzvlGGOvLE6ObZaxp54T2VRjp1YGAapRt12IUya12EXi3QQqF3h2tC96xfrZvr-qzcrtPXdgLnB6LmI2lFF0dgHsCRb7_hMvZAjXs_QHA_JONbERQZVStX7QkMlZLyin5gBk65RHC04HPmXLaLpnDWa2n2WncfWXdB6FcmQnHkOT95i8KdLVK66GfctAXaEBaC4nQIKfuJ77yDWws8ATokkQsDG0lzKo7BKASKwragyYQjIoDuCJZxZJ9NIfK6rjkMJTDtO-7pI-KYTqu4OPnHa08gtZeQgjvJatwFRuNwdd73dPRd7lGPny0ZfLR-JNnvMyb6NF-XbzAAy8TN25UfM3aGB2ivifCoWqniVGosMyUgBYORdl38du1d_guUcs7dmrD3fUBCTyT_SVd3TCCu7XbZ6zZGrrYyLLYeirnu1jScQ-OMvhNAy_ywJrDyw0Uqyucpq_f-vgt02iKoWjtK05sfz5-tEUQRUrK9EhUqmLqj4T3PXqqrTUQhLpNYtOdzJsH-EmuOS_VSV8GAm2I5kATw0Y9xzvhBLDAWYbqW6UPng1G7PpB1en8v9Zicl9NGwp_Wm5f7jRmZHj-VuT0aCD0Tt56ICTCfia0WdTGCsjQ9aAJlsueI3llkqsWgjkC5waLu82YvENCl8YeI6G9xNFj-UYqxyogcfzkd_l6oP1GA-gE8uHc2L3cBgLE6d_D_x_x_ZhRgTQvu6JiCEOQtlDD8TCDabL5DnIYdY3o0-uvQ-TimH0uFVzuYgRk6b1chMATeUqYt3OGf8ceJkdznULQZKisayUw7RegZVMkJO-O5x_FTwAUhQXCgAPeh4YiUnT9Dud_ynSMPH68sR83fo3n5PYOpa2IirUOnzKKgKSQQUIM1MsVkSk60PoB4I3VjeaKFvc6SrorR1EMBMxRMFKGFmuJWdp2fkvBaQop6XhKT6CN4g95W14jEKsIoYV6eriAX0J1NT_-Gqs=w350-h140-no?authuser=0" alt="好收納">
+                <p class="bedAdvantage-text">好收納</p>
+            </li>
+            <li>
+                <img class="bedAdvantage-img"
+                    src="https://github.com/hexschool/js-training/blob/main/%E7%AC%AC%E4%B9%9D%E9%80%B1%E4%B8%BB%E7%B7%9A%E4%BB%BB%E5%8B%99%E5%9C%96%E5%BA%AB/5n1uTFh.png?raw=true"
+                    alt="好組裝">
+                <p class="bedAdvantage-text">好組裝</p>
+            </li>
+        </ul>
+    </section>
+    <section class="furniture-compare">
+        <div class="wrap">
+            <h3 class="section-title">家具比較</h3>
+            <div class="overflowWrap">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>窩窩系統模組家具</th>
+                            <th class="text-muted">組合式家具</th>
+                            <th class="text-muted">實木家具</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>可單人自行組裝</td>
+                        <td><span class="material-icons">done</span></td>
+                        <td class="text-muted">不一定</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>可多次重複拆裝</td>
+                        <td><span class="material-icons">done</span></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>床墊規格彈性大</td>
+                        <td><span class="material-icons">done</span></td>
+                        <td class="text-muted">不一定</td>
+                        <td class="text-muted">不一定</td>
+                    </tr>
+                    <tr>
+                        <td>材質可長久使用</td>
+                        <td><span class="material-icons">done</span></td>
+                        <td></td>
+                        <td><span class="material-icons">done</span></td>
+                    </tr>
+                    <tr>
+                        <td>小客車即可搬運</td>
+                        <td><span class="material-icons">done</span></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+    <section class="recommendation" id="recommendation">
+        <div class="wrap">
+            <h3 class="section-title">好評推薦</h3>
+            <div class="recommendation-wall">
+                <ul class="gallery-top">
+                    <li class="recommendation-card">
+                        <img src="https://lh3.googleusercontent.com/pw/AL9nZEUyXjLUv3RvmREM34ohP2HXvGfqM20IBP8SSZ-pbwcNXIyVeabbzr-_-jJ53kdrt6HJ1-DkpaxruJ2i5AgXaQ0BIRaekfYUgCXvYAx0VQtWyWWKoqOV_l1yfTOhuoUQvuGn9ZBP2RtdXAcPXROmh5tav-P-MKzfDx5T-r7EyWz0IdR0Yaux8vQWiFIXe7cY1TI6vLdch7JMdyRlamM-M3s0CeWXImAXIhkXV15iBhQgzBjBi7yu0VsscS8t-5FpolvzQFf8Px9dlIIi1RtEUgFAxVC7tDZmXbZvQe0f16nGToh9BKBihSbqXQG3ZvEaNqiE-7vpGvF50cJsJ5yuEgmX3p1Qc005KDmDfw55wb3WoY8wUFy2hBwrlYGp_fwtX0_RGhvghbri1YCeHY8fzOHzpFZs8LWTtpyIyDiz0ka9aDbYSLxASTq21WW7fKZrN196oQekwxw5zXFyyap0b8UV3FHAXduXCiF-zKDK6k_QZVD-AVB5PE9VVzZ3Zw9aEjzQbsgUH3WoyiXgr44MtYWJiOPK2X8Fw174Sqi7oJwnUJznRxganx5TQ-7KK8SpxtBZhmi9o-kGwaoQRwVjpuS-LpEa0MEz3j6QeT28_0v0xlEtrQZdbc5B_0bYvzroiVTXHsL5Y-jpqBbMqw9AAsIa-3kcC-RrkgxljyDUx5DriTN5TC13s4Mb11Y5i25gTeNbZcY9KE3hUpR-xEfkMLSemueEIgsfooLgpbW8WhrjHl8ZtYkBqps2PFOqVYU6FxgG-g9XsKLKLg-0u8xA5VXdOCmfLEBlEwjlA-n-UDyM4uan-9t7q4DCVNWGXXntWTQ65XiDrGlEqgKTYGmE50QwXp4so0vnF1JMHb0GEhN8NNhgAYtAj7Opsog0HnxxPXYVLwDhqUPUMyeo75j_mYghg4iYXoWoYBdSnTtrOzBJSr_IvhlGp9D83SCAgLIOHZ-witZ65N79LnxRUcjnQd4dblumPnM=w95-h96-no?authuser=0" alt="">
+                        <div class="recommend-content">
+                            <div class="recommend-img">
+                                <img src="https://lh3.googleusercontent.com/pw/AL9nZEU3WXvItBWNSzHMzQPnlCAhNffEPoVav-oU3jJVwo6Tfj7EEOPCa6iAxSp83zD4ruHRjGBwPzq3EguWDzn6Jiu25Mo-eXezWrAHYy0MzliZScibD0Xtv2aadgDMs-jRfRlDvGdNqKb5C6C4IpNfXAuHOLtkQNZYoofXFlT4iGL9AVWFuNs2l7m8x44_0e_eC4gdhdIg3Oyk1MHGC__iWv8xO0p6LaQ9ByD-2l23UUagKqrlY5dLPh5fgpdfJG27cZcOGk_cBaJrzgw8NkgpEUKGMco_3PI9pj0TwUdFvggFpG2L1uh8dR_0SXb6ukwV8jdTERym5HZ1s3QwMBHZQFAaeDklVHP4XyLfgBpHDGFIlzO4TDo_wxUPt0rnRJgsjnB3cXj9UkUaBEDXMEtl1bVLh7S--exc1gI8sj-tn7_1Hbz0P_lJLzT9ul04UHjtmwMeTfyrmMmlqyUXWnzGvBBK0L4SSEbF6mQsMYCWrQd7ROspb1P5a8QWhBnLSw5e4aSHQL9vLWit8fHDiq8xtb4Sscsg6FoXArvBV9mIpelW6RK6LGxYa4ACkZzUIvWDyagw4y1bsn7y03oYn2FaOeUk8Rn7mxMVYEFGw6FgxYEa5v_J4p-TU1z9qG0PDkeeiMwBNxpnIDDZrY0BfPYNUjL-CoXuzOXNOEK6BsTE2Hl6KrsFA-E_8siNEkQgxaOZjeG8lILfIqLcNh8xG0I2mUIqNetiHKHcZszMQ_dyGF_QwNALIcuHs12jPk_-D7gR4p76vkYxAZX5VrXHAL5OWlCI2k2wsOMftLNeo9b-Nobaf9ZWIhdt6yt6z4X_UpFrFMR5tG3m9Yi4GyB864c3ex6hMUMR8uvflqaCQSg7sCQaQ6f-pc-y-02ti9mG75XVTt80bt2hlTF3kH5DuytUtItul8thrQyKr4G9Al1yMH0PD3Q0UCRfeJ_6OaF00WUD39evN1gwg7s2lQzyV-gN-HRly7bkfGk=s80-no?authuser=0" alt="">
+                                <div>
+                                    <p>王六角</p>
+                                    <p class="recommend-text">Jodan 雙人床架</p>
+                                </div>
+                            </div>
+                            <p>CP值很高。</p>
+                        </div>
+                    </li>
+                    <li class="recommendation-card">
+                        <img src="https://lh3.googleusercontent.com/pw/AL9nZEVQP1pQQKZP89BidRR3nKaep5BMIth9xsHiFxmiwH_97pNK-VxXL0tT51rusHJAi3GPLiFVii20reXNowFmQDFUwreo8U7KAaiJonRVcw04yynOSvcanyk-CXU2x-KBcUxiSxk-7XRm1WO_ttRd6_bDf9AVVvR0Q-cQXPmZY4P0_9bUjZn9rGZNBc8fOrSpRJoVHLlt0uwRBygF0qgIkQGKVrPuIsrFlhjlp1H8TuDjiE78pNWrP0YVKEJHOzDkGjW5HGz0zF59hKPXlQRz7C5yCnP8kPHaoIdrEIiGamvI9RW0CL1u-rOTCXpWuZH1yVtw-v-E-5-Hvy0nW6n9PsSceEwLXOAiIW3bXA3dws94MbtuqwSlI08Sup4m64NPG1vjKhbTCBEXXHmKUq45HukzVNIcIK79sbn0SYVRmGvOdyX5ZCUQDdsD8GWLm_W5LgTlE3S7m3Cu2rEHIIyhy5p2f7zS_4STgRGtQlkSqbMMR09sX1K5wWN_yP4o5f-gkDVJS-XhKwRo3TqfDTMYShKhjUbqqnZ0nqC_LscBhl54Ak5r8CQCpZJncJpJooarrJRzO3LOmHbJZ13cG1hfkcE97CIKNDN9wCKwm9ZgWPFweENbYuf2ZHAF4LtxnB7DeKeIEdIGzgr0FKlR5UOsHtg0z0f8Q8v2UBLOROXxrJpK03PCe3axdSe9eD5syw-zKPdZmrrT6wpjib8jEj5cBXEGwERj3w7cdpmvoekn7pTqGzcJ9pcz98_DP0HE79gjuJO9w68ApbCu2SNCjWCPS-aQwXhFy4MchYhe8fsn4Fltn2yQHFCPt1jPx4TczBpxoEMo10x9_T_IOODhLgwvshauuVrsJqvufwT82TC1B_2KWPCqH2YuoL9qj9jfjgAk0DSEp9EH_6eF2wmTCIltswUSON3dWvfCh9wQC-2Acmb5VpWqYb7cM0wk2KWcK5SuNOCqZ7X91SPeFe65_jgvy7D7PYtpj6k=s80-no?authuser=0" alt="">
+                        <div class="recommend-content">
+                            <div class="recommend-img">
+                                <img src="https://lh3.googleusercontent.com/pw/AL9nZEUTmCkdZIZJRPtnw5OvcxvY01x2O9OKCbDqzhBftN9o_c-bbYfSEefYLC_xrI4JX14laaDUsB-vh-nhmlKkoJbalE1pB41KwxPLnSegq-btTzFf5KQujhuPPcGoF_N_RwfPs-au4VCg1zpCOYHWR8ro5suS5fSGBi8TemAWuBcCi73yXs5Fhc8R0uqW4DaAVh2LEfOI5ZcwSszZ-d7bUgAfrqC79Am1GRGm-fkUbFoO7knUbEsS17LZfK-ai8SaOqzN5wXTqT6Obu98utm1y-QfaeXloGZyTjP_YjRYcN340m4VuTQ5AdomRqsyopnv1JqB_zK8ieKJtXsPn_uw4cxu63_hapFirp4E0WPZgMLF2VtS5WzfFUkSszPU0mGRtyC6OoDw1FN2NKwIlofQ2U3qK4_bwA4OYlBeTsbJvhvJh0BcC5mW53PoydNljc-c1NeAfL3L6es5Ai4DhkOht3wseeDmBh_mVwCoPzpJWH1PiXcrdiECsI_RuJz9_AqEP4cXuI1LO1jn89uX7TOpk5azy1XcTevpEglio6IaTgMso3GO3cKUIwt5QGuyWH7EM6GnTb1Yw3cN0LfZ9jMtSgpOIrR_G4Nxfs8uERhVS8r3XiMd6lb6S4Gg7TXdOUqw2VD0H2ZOJTJ1ZAcswiTmNlxIajr9Ov0_nCiouLbf_DkXoiW09PC3BFpCApxA8wAlb5B3oAR36B1lBLhKTdfpqXdoHOaVhYM3hlaINtJ3q0Vmg8jZ2CqwrrzkSdN-pep791VbH3_MUJbh5JmWLRucGKxEt2XjsRgpViQ7K16uevck6bxRPaBOocmZZyf777Ejmeon9vnHjnE2UOD9BXaH-ZWsbVsKTKNM2qeeZdSDcpV84qRHaIrK9U5NRr6141ofYLybx3RDhBpO4EUAYVXkBBtLZwt3ao4cTO5hiUvaqMF8TyoqQo1RWiNCk_1wA4c1Bm2uuEKmtcEa7M2JE3VEDWXxG0syc8Q=s80-no?authuser=0" alt="">
+                                <div>
+                                    <p>Leaf</p>
+                                    <p class="recommend-text">Antony 雙人床架</p>
+                                </div>
+                            </div>
+                            <p>很喜歡～還有送三年保固～</p>
+                        </div>
+                    </li>
+                    <li class="recommendation-card">
+                        <img src="https://github.com/hexschool/js-training/blob/main/%E7%AC%AC%E4%B9%9D%E9%80%B1%E4%B8%BB%E7%B7%9A%E4%BB%BB%E5%8B%99%E5%9C%96%E5%BA%AB/3IATkJG.png?raw=true"
+                            alt="">
+                        <div class="recommend-content">
+                            <div class="recommend-img">
+                                <img src="https://lh3.googleusercontent.com/pw/AL9nZEWrQGqWgEcWpio5qWS2YOQgfKwQ48cRMER8xxjVrACD-QII9X44RYY2VQ51sa9-F-6OGSDbrklNomnosanHp-yg6DTGUEKW4Z90YJZxKxVQZpobs7HAR4coql21t6FM3QDIstEpxmtXsis7wKr9Cv7O5a84RccfMI3rq33RHaX4_bcvHKt5rYCFZTox1yk4mOHTKDJhDs9e8hCaVbnT26xQH34ds4UuenT-EMaCZl-IDJ2xtz3RS12q8rJT5pCE4jWHh1hVDMmYYipvcyqfyhGz11UxrYLoOizvXYU86v5TS4TO3tdwvC8838aNyPaYzH7VgQcU9ubLxY9TAzv2Krvn3pZbx18oXMuGW03bxlF8jxbredWPtw7ghERizHQ0DSmRaUpqGwboHgvbqHZ0BZyaqX4jmxNcfgjX6ztRd107AfrDZKXNJ5ZgJxHGij5IyyOu749UI0Rr9HlZZkVNu1cKXSDH24xD7LFty5307QWE5CD6Y-k6iQgOa_AK77rxGs0W9Wspnwaz-sOUX4WD0oDX1RcX7RLtfpvWV4tpSZb-i6BzOkM0lrQKRDkt48mn3hhI1OImCsljo7oalFH4aRlMOXIniNjbYskQCzkQr2mBtzPQIs1_W1f-ZVnawxqbRvYuPFxn0mx1UI3EdqJBpxkYVEzsJxW2uJoMRBjQTFJWCUJOqCZsORSjunAU_xUpvn2Gvr4PP7ouE6yMMmHLZypdA27OStWKrUSPm2Ql_lcnRV8mROmE0qcqu2mlT_5Q5cOJsUlqnY5ygeu7_Q3P5sYqgs9bPoygRpb6JvDLWQnIOVlbhfpxNA8zCYIAdm-vGsijMSu4_DniqC3O8rZ0JJu0VPC1DXD1s_hLsdXAVOx7xvkjCgEaNIpRRzCHoqAZihSDCrYYWKTKYx_sJGlzagGSHdO8v4om0n0rpHrez4M_8Rfhv4HdZLH7J-LY9qMcjQlWQVVfwwoOEKAXitW5mBQnrL0KSqU=s80-no?authuser=0" alt="">
+                                <div>
+                                    <p>美濃鄧子琪</p>
+                                    <p class="recommend-text">Charles 系列儲物組合</p>
+                                </div>
+                            </div>
+                            <p>廚房必備美用品！</p>
+                        </div>
+                    </li>
+                    <li class="recommendation-card">
+                        <img src="https://lh3.googleusercontent.com/pw/AL9nZEVCCpBuRSSGtbNQBVQyWF5G-9iVK0btH8MF90YUujZxNlkXAIaKcywlVvJ6V5kNrAdv1JII_ApOR9oBYMAA6Oz2X-vfF_giBlVjplEbWx977tv7a-WrAorsBGaKxGL26fbWIVLdbsOUg7KhGFPGD0-XUr_QxMEHyTbVJM9P_5mlJ_mQ4z_4LBmG6Hw3ltes4-XWerePDAZDGjt1hPy39vUFhi6AEw-4Ds3MkRA6jwYocPrPmvL63z3oaHXLqNWPDoUs5ztx8dRpbXF3WZila6L0LIgywHWoqJJqaf-LIgYMNhpS0PnG0snFOkj_kPDu2m_qr-kZICM067aWcsiXnF_6Tys1R0N8hxeSSl5zjxSuOCvN8d48XvJfEYdxfe6WqBt-SlG5o2cT4GAh41pcVUDCtuEiKwev9J6y1X6BE7wvk-fawM6ORcUJQvSlDm9eHl7eBRwJhwljjIa93TdhZqKdEYzj-OPVT31G2MIYFyZCyv0ugugngIyFYxMyP96Y344wzZ_w0U2TropRKiTAlfzAoD7P-sRj3gZGBUVBgzS5YwFBfkcQReuTfT_YSbXkc5FqQs2thyxkTO3mEExNXlc-5axlYQBlxaHdfQCorKFei8yQmPFNk54sy-E3pJB_J4Y3ZBGNkXRu37QVuJfFbM1vOFOjJKrkwG3qMqxNUPeW5oMYXFNv3ILeH-b85Jfx5rUXjIKDhyFO2MSCChblFujxuAU-cMvYJ3ovkk6pLNHZoAoPr3KM4OqMmfjVYXfO6Qii7n4bZfXOvx1vlA1DkF3APTlhFw6cOEZWje5Xqctdsj4i_Ck9E0wJl7ZElEjDqHEqX-lcfSFbD5AaK0aa8QWlCNpilRjoJSTexOeLcCj_69w9G5AiLjzIvT_3-44se2gCx8Y_Z8blVI8VoUAbb9ZH6dwVhAsLCvjC0J67AQ6QgbUK_TBo9obcajTrQgrm7pvbkMRZh2BAE2SQMDUsCGbMqY3d5lc=s80-no?authuser=0" alt="">
+                        <div class="recommend-content">
+                            <div class="recommend-img">
+                                <img src="https://lh3.googleusercontent.com/pw/AL9nZEUfte85PcEYhgvBvF2-OqZhBZ0-UV9QLp_XdEf165jAXqozlyjNg5E_N3EQHMiKDbefZJgYMybgeTOUUnt8RwKwO1MeG6WNPkUp0GA5zuH5b9RZUJChuF4IxXv8utOXwDJX3hrApCbNIG9WLTMDmkxJeCLdi7aZ3jmL78GkFdv4eXssSuxadYqce_fnOQ6WgO878BzWCq1WFj5dkoOUwUPXQJMa14Ca6XgiQdPFnVLCNSDDdao01S4tpyPhw2ytyM4y881-wb8aqbN8V5dHwe7iFY6857Sshi6panEioEkVWEaijwCa4nawnRhfXR7cN2Ho5vsSMu4cm-o--pVLibDlA4ktB1EUP1Mzgrpws3LVR-EvW6hTn86RM3iH6W4RF8g2sBTsUxMHSJ7YQcCNkIj_zfap7J0IsaEc8SzpEEQySGMxfY12bhf5FpIeBH2qok0hI0BTi2NJmR1jjRK7jqTtQv06Y7Qp5HfmbOxLt1OCOUD2qfD-qUkWLZEnZINpVSZdt3l0v_LP48OV2rXw3Ob8mdsIa6qDdReWbT_-6UsnjEQ7TPpcDCygWZ04B5N-2aH--B71sgZhOwp__JrZlEcqvAxHQ9MsXD-yXEBtpdhTKtLia7Ni547mzWrpzrkVvS9R7bOXh-cTB9htrHfyN9HZos3Fa4p_ZgSd6enhQ6zIdjlOzwHOX7ddaGe1LHc2oSQzYcyBNshR4rkvw4biqtOtkELCbeMtPdcmKDBKMg6mX8-EeKRGXm82ieALAEoyrMzKcDyczjkLrdWoGcUB0vKFrezsxNlz8geUT8BDhOce5ZtS5ofGFpMb7PLx8FDZq26NtO58J_kRUIbgPHue7Wtim9pscZOlJeI6U-IfPOnYcVpr9u0eycnEqGjPBCKRQYcsEOx9-HE8vBRY0pmdaX7U4D128bPNlhauDdREXS7gbeWw70Sg8hr3GMEzEvHQeQJ_fduPmpCSzATAem-BrI3QIzEwZXs=s80-no?authuser=0" alt="">
+                                <div>
+                                    <p>isRaynotArray</p>
+                                    <p class="recommend-text">Antony 雙人床架</p>
+                                </div>
+                            </div>
+                            <p>物超所值!</p>
+                        </div>
+                    </li>
+                    <li class="recommendation-card">
+                        <img src="https://lh3.googleusercontent.com/pw/AL9nZEXlEKjSDVqnloeXLhMy9Wo5lDUgB3YIUf0e_iD9e6MA1-gvbWH7Xy-5j5v8vOqTbbTOLFhwPbr1MzD8OzTmJ_Let_e91ezzwV7hOO-Uh7T1fyO_AL45cFm_lAAWIvsjHNW2MDzPonvKsh1kFKV7B7346qI_HJ910wO39w6yUqPezTl5CRa7-b35GK-i6WBbPYII40HAIYsqabKlNGQ9vWu2xvYoY1SIWy7BP3CLBZHsHqtWaN6nBS9cqnJYUsY9c6VpOGJvl_s8qocirqEzmpccJG9in5fSDKf-8WJxJybxtaRyvrR7ZVaM9egmKh-E4b4TLjul3pyp5I7xAoDHVyi9pCuBqUWCr1uOo1sfj10efVcAYuFHEhQkG0mn4HtkWRaFVLP3dFdIxqNK7woTOrFiLlk7wV2pyteC6LUI_lAsWdyiFCLiIVzMfbLyUPDYlooYUyz8Ys2-DwypJKDBAqgtdJ9NCIrGIXuV3P2MpABr3kYrQsblZCUYsqZZQFDJtPdoLnGAqOntNHfzQoSIeJhbykB7G1Ks7KcAqqWwcIKMGnu39t4WiNevMOo_xdMrB_xW10I-pUxzWsItzZgS0yK5_Bg4QesN7X-CcrASgoQ6c5G8hXFlz3zPWZseKFR_wWms0Y8rieQUq7Nj6ulbZzQQj7Glv7ngcG-chEw1B9kC3aSo78DBuhl9TOskd1J807bCqZkAfzdRS2_tX9t2KmXtGqzA3mC6PHvojph7L4nPzOC60NgwrF77fgLe4bZglvpcsZwFXZaD2zhnAwmbKH2ffoC9nTLNdxXTzGgZJkpObA4ppjyO595tbzZMcuJ-joniweCHDOVhnc7avdmJ7w8R1gkEwa9LSdDMrZbMADmG5ssY64Cxx1gG5Opq8Jmn2HbV8y0KzdfSXLDEKYt4hobHuGQTE_VZg8leThoI0W0AwcVZ5HE6wXDgfbIPyknCMsZ3WGpngbxv3OP2UfggFr_VNKrdrMs=w95-h96-no?authuser=0" alt="">
+                        <div class="recommend-content">
+                            <div class="recommend-img">
+                                <img src="https://lh3.googleusercontent.com/pw/AL9nZEW4T2fEEPO0hDH7ZM9PDskTgPOY4ZK_QdlQ941sTEOhSAHdppbgDmfbp99L_tfCZIc2v_vjAyl9Di-UbUV9YE2Zwd35I8lh2-okShzC45rFQZkeGvSCkuLR9f9qC5rjDW7I78EnCJkUwovCDejjCb7P01nO4qCHH8Ds02U3ZfAdCbpIi5lYfrDS7hOi7LrFk3fKNKORbKSusxcAw_owFKn9aHzTMLhwi3ea5idItMXDIkYzSJ0GW3QsLBUDYA0R11ci0yA_haxoTI7ggcpeom7KdfFo1p2Kg5uSQThUzbRqZl4uN1m2a3hfg90FITEFHTdYkleIcis_esSLYUHgzJOMucV7BO0Vu9pG1ClPYxfTNoFikbQVpLs6KyC5BuO5U7HQVFk3vqXtivx3ShUdbuLxToPTlt71Q_IZoAB2W4RmtTpNcYLTBg3QLSFpkfBgVBKy_5WIw4Ro3vMqgUncR913t-75LNiicov1LaT35t_WmjBZ4vjT0wmaGiSPhaa2HJHYmibwsX4qAc2yqF1czVbYQr6N4oNkHG8_qz0mBq8laIZFhrrGypNH_IWz2jkcqQvhZy5U_ZocgWzLiDRnqswgpw_hV_SWfTHzQNIYiLmAwIvW1loKIX8D2kh7QQdY4nN5VWPFQ4kccFgTVmwEofl2OQkq_AX_svhZ6o-p5dcdmGQR_a-aI-y5yCNvjXorndamDdyXueFv-SjFnNmGf93I_ImQxnix7jeqZeOlLjsK4XFOR0I8JDEzafT4CtnzKZ8sL-nsCmFrS3e60-IY7hgnFNCAy9ogvT4XdxiVPIF-nB1uyPxO-4RA1ogujAUlNSTHPafZuWlgTCORHgIhPc3RXYqXlRbcYbHefvNPQCIGAFXRWPFYb90WYCHSgVyN_MPvNTq-7Q2ICLkIg19b6qPQSTLKaohgDlPWqRa--luV26bFquWdp56WeNKahnbBojJq1_w_-mBosKXYfHTd350Zaw8nATM=s80-no?authuser=0" alt="">
+                                <div>
+                                    <p>程鮭魚</p>
+                                    <p class="recommend-text">Louvre 雙人床架</p>
+                                </div>
+                            </div>
+                            <p>租屋用剛剛好</p>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="gallery-bottom">
+                    <li class="recommendation-card">
+                        <img src="https://lh3.googleusercontent.com/pw/AL9nZEVQP1pQQKZP89BidRR3nKaep5BMIth9xsHiFxmiwH_97pNK-VxXL0tT51rusHJAi3GPLiFVii20reXNowFmQDFUwreo8U7KAaiJonRVcw04yynOSvcanyk-CXU2x-KBcUxiSxk-7XRm1WO_ttRd6_bDf9AVVvR0Q-cQXPmZY4P0_9bUjZn9rGZNBc8fOrSpRJoVHLlt0uwRBygF0qgIkQGKVrPuIsrFlhjlp1H8TuDjiE78pNWrP0YVKEJHOzDkGjW5HGz0zF59hKPXlQRz7C5yCnP8kPHaoIdrEIiGamvI9RW0CL1u-rOTCXpWuZH1yVtw-v-E-5-Hvy0nW6n9PsSceEwLXOAiIW3bXA3dws94MbtuqwSlI08Sup4m64NPG1vjKhbTCBEXXHmKUq45HukzVNIcIK79sbn0SYVRmGvOdyX5ZCUQDdsD8GWLm_W5LgTlE3S7m3Cu2rEHIIyhy5p2f7zS_4STgRGtQlkSqbMMR09sX1K5wWN_yP4o5f-gkDVJS-XhKwRo3TqfDTMYShKhjUbqqnZ0nqC_LscBhl54Ak5r8CQCpZJncJpJooarrJRzO3LOmHbJZ13cG1hfkcE97CIKNDN9wCKwm9ZgWPFweENbYuf2ZHAF4LtxnB7DeKeIEdIGzgr0FKlR5UOsHtg0z0f8Q8v2UBLOROXxrJpK03PCe3axdSe9eD5syw-zKPdZmrrT6wpjib8jEj5cBXEGwERj3w7cdpmvoekn7pTqGzcJ9pcz98_DP0HE79gjuJO9w68ApbCu2SNCjWCPS-aQwXhFy4MchYhe8fsn4Fltn2yQHFCPt1jPx4TczBpxoEMo10x9_T_IOODhLgwvshauuVrsJqvufwT82TC1B_2KWPCqH2YuoL9qj9jfjgAk0DSEp9EH_6eF2wmTCIltswUSON3dWvfCh9wQC-2Acmb5VpWqYb7cM0wk2KWcK5SuNOCqZ7X91SPeFe65_jgvy7D7PYtpj6k=s80-no?authuser=0" alt="">
+                        <div class="recommend-content">
+                            <div class="recommend-img">
+                                <img src="https://lh3.googleusercontent.com/pw/AL9nZEX3ZNxEk8AmYQwlZtydgOHH8VXgthPiw9NpT96H1eK66oHPjaxiaEikJGMLVdmjFoBhcVnk4Iay7R7taki-Tx4LUFC_SS42ssTsVFnww-hIIuraqFycUtO_8oFMvbuNeB0CF30E6vbXumZLBfk8u4wKAvDQ4JCYJJ2mBAjceXgFuTU6wnKvcCo5ekbB0gmhvCt3Duj-7qn6hdCN0W5w6mH2596g2ddpNmXi7tLRTeR7US897ZTd6usKfsBSIEuDm0XNmstg7zOBYcevNyFWZALvW6wksePv9OIUz5NjOai9W5PypFa6rGN3oh40Z8sT6k1CTy802jlAlCzcuPsorTYhQEUbu87RkMJec50dw-ZnsssUcBCbdUpYbprZGB7TIalwyEkFyvMFLaRm0v5tNrcSs1hzDuQlU7LCDPpmTnYFnLlW-cqYM5nU_JfHaAszDGAv66D08ONKgR5Aw6zPVTx_d5fOkZU7ZZg0_5_NJp8QnLIZouWDzznD23zyEHdVQR8Ih5GzU95Ot1NWjlzFOkmV11tu32BDFnitRzMwm091roqCDSnlYqxcTwni8cIDMDnhLAJgfe_Kv7zXQ6glgInwFmFvdZG16YXvBrfEA2ASRBGLLYscKXx-bZ34dy3mlwks7ArgHNvTiRhgaO1LCDUT1e8CpkUsCs17a2t9dnByVoUGvILQwH6NRJz4bLL6mAwcX8zFgK3g-NSKZW3O1KwY78Oag0vtFof2JWoIG_LujHbyR4Srx46vBritpUMZ-WU22bG-U71wZjkXi0_K9LGnE9wp8wuKDT1votMZvpAydjiIwJE1czjDzbcqhVRvvgkgxXzf65MMyVCGpYQ1UdfscMrN9xE5GnOBld8qwB2HweuLF7frEGOmmLkx-U6JDGc1NhEZOXPO_7q3K_5AT60XhjHwo44XvmAi9xHNWOkKOXM4vtAab9G3rWzZMHZwLmxrkLTgROcna6VB6fiWd62-L7F79JE=s80-no?authuser=0" alt="">
+                                <div>
+                                    <p>小杰</p>
+                                    <p class="recommend-text">Louvre 雙人床架</p>
+                                </div>
+                            </div>
+                            <p>非常舒適，有需要會再回購</p>
+                        </div>
+                    </li>
+                    <li class="recommendation-card">
+                        <img src="https://lh3.googleusercontent.com/pw/AL9nZEUNVCOsXJFGXF0CwFPFm9Qxwp7ccopMAXudhYAvG6y7TTU4Xv-Vs9s7_ng4dLBU64EMihH1pwcRFP-gTdKKcAf4hOCr4CImmfa_ztAFaPRZXQixYCEZupx9GcG09uUTfsW-RRkLfgkUNO2u0DqYL6VP-oo6kaqX2sCNZ3NcHUxKiizF1F7N1ZjXqrIO086W5FHNmo6MM8NTrTiperhVwjl3630ZuTCZlO3rHfKdK_V65mMkkvENqjkOqlRYkUfoAnnPL3IgV28KVKJfxoKaNIT3ieEfDjN9t0azm3Cu-rcpiTLVpHFW3PS27g6mJcsY0oiY_bDiUuVFh3gBhUOvCo-3_6VS-SzFnkpjPoqBZAjP03WPsUQ9N12ykGmKuiQlepINEoyTEIfbTkTHL9QgAViNXTqLhIsHFcEmCc9Z_idFUxgE0jUyWGvTFNNvEO9V4ss1Ms9CdR1pNh3FiwHycp2ZPjbP9gnlZEjJh-V6_UhBpkL-XvOVdPZbthF17obOK9zI6MbxwAJGvjOIbcY9WcBzLIzH6cogVjqAtGDnqMPEF6f9d6RxtwkWs7uwA1FS1ZPZoneSOM84ET0YY4tKbVwE8lp3o5AY4Rs9TZYyEVJUe5TsuqhUqrgp4pKfxTqbiBo143wF6J-m2qCWdFv6PnijVLn6j4TL6_erBu7BYn_H4FmfWYHt__gFif0BgMHAKQqhcZjI8mMRSwM28X7p6-TlptyGhljZQ7YyPv1FVg5lpe6AtAbq3fBWJG7nr3Z6zywz-aXcWOun1pBKn6Bx5aL4vuU0lJVTachQGmNcRq2We6Z1YXxgBeUUurJbFm3cW_FuONnRIRf87pTywdDgCOSE51oO3jU2Lnjqi97wpHCnQLJU7imr1ue6o7jRv7ZAFw8Cfuvvw3zQyJjBoaL3LggPeOnlr4t-X_P_hUyYfu6KMrGpfmSxSRsHx9euDYUlK0RU541_eZHul00lVF5TbssaJDF3jtU=w95-h96-no?authuser=0" alt="">
+                        <div class="recommend-content">
+                            <div class="recommend-img">
+                                <img src="https://github.com/hexschool/js-training/blob/main/%E7%AC%AC%E4%B9%9D%E9%80%B1%E4%B8%BB%E7%B7%9A%E4%BB%BB%E5%8B%99%E5%9C%96%E5%BA%AB/8O1cOnG.png?raw=true"
+                                    alt="">
+                                <div>
+                                    <p>江八角</p>
+                                    <p class="recommend-text">Charles 雙人床架</p>
+                                </div>
+                            </div>
+                            <p>品質不錯～</p>
+                        </div>
+                    </li>
+                    <li class="recommendation-card">
+                        <img src="https://lh3.googleusercontent.com/pw/AL9nZEXw-DNvlPYZx2zTKFb-VsHPoyHQhSuL81yxSG59tBPc4n6uPT_xF7cSRwuz6WPmIfOBBs0sO0K8iRB7XbZqLHsJ5rFo_Vyv_lifBJjg1NkSFYOf_VwU5aB5S9jP7YAesKupj0r7KMIXeLZUo3KFvUIxD_li4Al6E672bV9DJBlfRA9ytp1nxRu3CCGb1cftWRrOHSv02yu1UQiHEhM3uMD_J71QhezntrbM7PoCFhudT5E3bHQtSdbMh3rI93oUyw5V2BWQ41g1cufxVLzneLnimo8fYmZkS4UCo6CkVPsYJs8gQLwMrChoBjj5wNyqs6qHnUZcIUjVv3mjJqGXA5kvJMjjBKuPZka9pr1ybdeN4dRad9PiEdv1ltaHK76myezhU6wNgfFtMjTzhsHqSQg07Mc3Y0oEA6dyi4FsxYkLZsF4FOBPYIAHomNoI7ei9J-ToGBQYd73NzfIQw5U3ornmak62LXL7vwRpc5_2dvDrigd-9QkCHxwzAebSckwgSLV_F3HzPr28jfFS-I2tDQzsM3ELPjBd2etCTJ8-_HjFXggMkP_KLlF2GQW6g1nIQgJD77eaToCftJrmAA3X_WDOxA-2VKfgz8l7gbVCtR9MyJlr7ZOrpna6HIPwg4-XTOlLrcyfUirAOtZpYLpM0MISMvBBJ7AHSHnj3OnZGRrMEAmtUoASFJkwn0MoYukuTNUhR90AaD10aGP8-Gigqr9jzGLadw0nBWWJOWTHMoWBVR_jOZrL-3ROjNSG542sseMTYFHrMpBpbYdMx4Do4kSnS1cM7-czm5UnK6mpGcwQxjeRKi3hwKxrz5UQ4YB24S-ePQBIPeeRV5mI2PApaaAOf0ynZHHsU-9HvIWiI4xIJERZWRFbdRhXFpLvrPoMn2nuAC6_8WIzVq73YctBLCtHuUEi92XWQjDA7Q9J8BEXGDfDik3gm-Znt2mHW7-QVb7SZr3kYG2bs2mHLPR57aNyGMENAc=w95-h96-no?authuser=0" alt="">
+                        <div class="recommend-content">
+                            <div class="recommend-img">
+                                <img src="https://lh3.googleusercontent.com/pw/AL9nZEUsLg68ZYwC4yYI3DL9IL0XqO8OTbfZJwQe2F5LBR1Y07WE7oxYsPzoXsPN-nGBkfZFmuGP40HW-x6iqbwuzzu7xqjgqdJhcwg5053Ll6VbLKjle9b7UkivwwMrNEYjCQebe6Rjfejx12wAh-Al1xp4jyQV5nk9Qu8fvAArGRDT229Y_wN5ORMKaftBg87Mf56oX4-keNraEBzFZxa-hHPxxrB67Ofzg5ddhg_JvpeMGrjMXzWjBFPOX6u6Wr4uMS4NqzJw4FWbzYQuuis0aD74Iv7FhdX1epFQooOW7Pdjujh4vRm7XGjbb2nnrDpu4GIfwG_nMi-2rPdpD4m-CEyqnfSwv_eCfY5cKdlXaKqWYrKbzknD-l7ltkRK4H6cRTqzYzesUXqNLKepjr_E60b04aOEXavUDKdqGFop2Bi_534ADJyWBblWWfJgzuvfoFREMiXwHIXpqaOUgY122IduGebu-NLfpstK4vfqfis1tUo3fSbv6kyh-gR8-fMqWAAS_9nP_TUZvGf--NqktUKM0ZZyLRJ-hT3OtQsQJCrMo4shN2gvyFH8p0n1Z2TdBjt6K6i44D72YZaaeGnJDUgGdm_18wxr9pgNai4GsLeA6-JI8zzGmRI1nGSfFPgLAV-V9TmsfsBahWpFC1eagAkyn2goDWOBpomZaptvj73UnQyYXIecphqRqzcNBlQsmG2lMjTPusJfjjeFcsqolbVu-k4bMMqHuv7E1IzCR-say8fmXo5A7B-qeX5w7lQ_bc0J5V482o8yJ2hZyK7yZps-murrBor5T1RTcijPJdWZfFNFeYblWCBfLfQrCRXoN5QVtX3dttuB_yIfi9On8xZihHwlMQ8hf8jytA35Ql8zYrQahscT8rRv_qZAoKAC-tAp53MphXvhdWQl_taKU4_-SJX9RMKnfolx8thqg9DOCV25unOueWJvjfcnygRrlUq_3v5Vt5J_OSAHFreNSCDk5Wsz7Jc=s80-no?authuser=0" alt="">
+                                <div>
+                                    <p>juni讚神</p>
+                                    <p class="recommend-text">Antony 床邊桌</p>
+                                </div>
+                            </div>
+                            <p>讚ㄉ！</p>
+                        </div>
+                    </li>
+                    <li class="recommendation-card">
+                        <img src="https://lh3.googleusercontent.com/pw/AL9nZEXlEKjSDVqnloeXLhMy9Wo5lDUgB3YIUf0e_iD9e6MA1-gvbWH7Xy-5j5v8vOqTbbTOLFhwPbr1MzD8OzTmJ_Let_e91ezzwV7hOO-Uh7T1fyO_AL45cFm_lAAWIvsjHNW2MDzPonvKsh1kFKV7B7346qI_HJ910wO39w6yUqPezTl5CRa7-b35GK-i6WBbPYII40HAIYsqabKlNGQ9vWu2xvYoY1SIWy7BP3CLBZHsHqtWaN6nBS9cqnJYUsY9c6VpOGJvl_s8qocirqEzmpccJG9in5fSDKf-8WJxJybxtaRyvrR7ZVaM9egmKh-E4b4TLjul3pyp5I7xAoDHVyi9pCuBqUWCr1uOo1sfj10efVcAYuFHEhQkG0mn4HtkWRaFVLP3dFdIxqNK7woTOrFiLlk7wV2pyteC6LUI_lAsWdyiFCLiIVzMfbLyUPDYlooYUyz8Ys2-DwypJKDBAqgtdJ9NCIrGIXuV3P2MpABr3kYrQsblZCUYsqZZQFDJtPdoLnGAqOntNHfzQoSIeJhbykB7G1Ks7KcAqqWwcIKMGnu39t4WiNevMOo_xdMrB_xW10I-pUxzWsItzZgS0yK5_Bg4QesN7X-CcrASgoQ6c5G8hXFlz3zPWZseKFR_wWms0Y8rieQUq7Nj6ulbZzQQj7Glv7ngcG-chEw1B9kC3aSo78DBuhl9TOskd1J807bCqZkAfzdRS2_tX9t2KmXtGqzA3mC6PHvojph7L4nPzOC60NgwrF77fgLe4bZglvpcsZwFXZaD2zhnAwmbKH2ffoC9nTLNdxXTzGgZJkpObA4ppjyO595tbzZMcuJ-joniweCHDOVhnc7avdmJ7w8R1gkEwa9LSdDMrZbMADmG5ssY64Cxx1gG5Opq8Jmn2HbV8y0KzdfSXLDEKYt4hobHuGQTE_VZg8leThoI0W0AwcVZ5HE6wXDgfbIPyknCMsZ3WGpngbxv3OP2UfggFr_VNKrdrMs=w95-h96-no?authuser=0" alt="">
+                        <div class="recommend-content">
+                            <div class="recommend-img">
+                                <img src="https://lh3.googleusercontent.com/pw/AL9nZEXyBLHWceT3GRz-g78AJZP9UCoedZcWkwSxzVWzUtJ2SN_0O3BZp9hZbv-v-GxQ4s5BF-5MVV5pii8fB15ZTNLeRs269v9TRfMAP3tbm9ae5wJKVS06EaDTu3d1KD4kIxw5vC7hGe_vWb82WUNVusUkzQpV_-JSfm4oLcOMrQ_WIoZXRj9aPVP5q8nNzO0e0MBK-GGjNoVjW_x163CsssceiJEOorWyG3dnKdwFVrw-E-tTASqI6bNpHNhEs4kV3-OG9dteOzfuLsCtMNcpKzNQ-d9RJ8hChGVntJBHe1-fMSm8HhSz04-964vDvtB7clGSANxzsTad-qPMMcVri7Y2MnXbqfhfOfFZjjlUQkF0E0_3-_nPoGST0EM12I64PqlKzpZYykw466Vtxhk4kcWSm6j7G3sjbLSRfY_SE7i3tKzW02TtvAZPsdr-krXMsrFSGLdcczbvHDtnltrTswxxgGX2wl05IO4cp035Jpe-okbQseA04Ax08y7WhTVPMzWCwqv9lyrIcU8fI9Wg63xLkryQMU5-Hz0txeYAMx_RwNtiUgCfxf3eb7AH2Q_Zbs-rA38eVgU5NP0txEV_F1rOB7bL_dthab46YtqHVEahxXfd9MpQ3HKwSnFgqEd9mzOI2k-wKGjMTtn6dQAuloBIUjgCTl5YJ3ockllbiA6c_b1MNTT5kVxTCphBSu3SqlEID5TYjortFSKwgz_NTM3kLrvjjJrngPjByngmPiJl3KKUrUuPpixOTHpuA0zcz7ojxKsDAIPN_BMtqDAon4DdTeV33V32H7QJpff-YU6y4_0e9CsHw9lLdp0FNOzh-W1FcXuBGRd0kkjG6TCtZtYcrmgNFZAylw3tocY4OoE20NXcZK3t_obqaPiKahTmOD9tEw3XS1WDZKQXiXhtL86mdtcVnXyiBWuhCb62LeB4uR6dWA6oshqkfysofL8XAd-21kh8tE5LFhIApafSwQmb0srs1v4=s80-no?authuser=0" alt="">
+                                <div>
+                                    <p>久安說安安</p>
+                                    <p class="recommend-text">Antony 單人床架</p>
+                                </div>
+                            </div>
+                            <p>一個躺剛剛好。</p>
+                        </div>
+                    </li>
+                    <li class="recommendation-card">
+                        <img src="https://lh3.googleusercontent.com/pw/AL9nZEUNVCOsXJFGXF0CwFPFm9Qxwp7ccopMAXudhYAvG6y7TTU4Xv-Vs9s7_ng4dLBU64EMihH1pwcRFP-gTdKKcAf4hOCr4CImmfa_ztAFaPRZXQixYCEZupx9GcG09uUTfsW-RRkLfgkUNO2u0DqYL6VP-oo6kaqX2sCNZ3NcHUxKiizF1F7N1ZjXqrIO086W5FHNmo6MM8NTrTiperhVwjl3630ZuTCZlO3rHfKdK_V65mMkkvENqjkOqlRYkUfoAnnPL3IgV28KVKJfxoKaNIT3ieEfDjN9t0azm3Cu-rcpiTLVpHFW3PS27g6mJcsY0oiY_bDiUuVFh3gBhUOvCo-3_6VS-SzFnkpjPoqBZAjP03WPsUQ9N12ykGmKuiQlepINEoyTEIfbTkTHL9QgAViNXTqLhIsHFcEmCc9Z_idFUxgE0jUyWGvTFNNvEO9V4ss1Ms9CdR1pNh3FiwHycp2ZPjbP9gnlZEjJh-V6_UhBpkL-XvOVdPZbthF17obOK9zI6MbxwAJGvjOIbcY9WcBzLIzH6cogVjqAtGDnqMPEF6f9d6RxtwkWs7uwA1FS1ZPZoneSOM84ET0YY4tKbVwE8lp3o5AY4Rs9TZYyEVJUe5TsuqhUqrgp4pKfxTqbiBo143wF6J-m2qCWdFv6PnijVLn6j4TL6_erBu7BYn_H4FmfWYHt__gFif0BgMHAKQqhcZjI8mMRSwM28X7p6-TlptyGhljZQ7YyPv1FVg5lpe6AtAbq3fBWJG7nr3Z6zywz-aXcWOun1pBKn6Bx5aL4vuU0lJVTachQGmNcRq2We6Z1YXxgBeUUurJbFm3cW_FuONnRIRf87pTywdDgCOSE51oO3jU2Lnjqi97wpHCnQLJU7imr1ue6o7jRv7ZAFw8Cfuvvw3zQyJjBoaL3LggPeOnlr4t-X_P_hUyYfu6KMrGpfmSxSRsHx9euDYUlK0RU541_eZHul00lVF5TbssaJDF3jtU=w95-h96-no?authuser=0" alt="">
+                        <div class="recommend-content">
+                            <div class="recommend-img">
+                                <img src="https://github.com/hexschool/js-training/blob/main/%E7%AC%AC%E4%B9%9D%E9%80%B1%E4%B8%BB%E7%B7%9A%E4%BB%BB%E5%8B%99%E5%9C%96%E5%BA%AB/3ako6QX.png?raw=true"
+                                    alt="">
+                                <div>
+                                    <p>PeiQun</p>
+                                    <p class="recommend-text">Antony 雙人床架</p>
+                                </div>
+                            </div>
+                            <p>睡起來很舒適</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="transport" id="transport">
+        <h3 class="section-title">運送方式</h3>
+        <ul class="transport-intro">
+            <li class="transport-card">
+                <div class="cardImg">
+                    <span class="material-icons">
+                        shopping_cart
+                    </span>
+                </div>
+                <h4>STEP.1</h4>
+                <p>選購商品</p>
+            </li>
+            <li class="transport-card">
+                <div class="cardImg">
+                    <span class="material-icons">
+                        format_list_bulleted
+                    </span>
+                </div>
+                <h4>STEP.2</h4>
+                <p>填寫預定資料</p>
+            </li>
+            <li class="transport-card">
+                <div class="cardImg">
+                    <span class="material-icons">
+                        local_post_office
+                    </span>
+                </div>
+                <h4>STEP.3</h4>
+                <p>預定成功</p>
+            </li>
+            <li class="transport-card">
+                <div class="cardImg">
+                    <span class="material-icons">
+                        done
+                    </span>
+                </div>
+                <h4>STEP.4</h4>
+                <p>Email 付款資訊</p>
+            </li>
+        </ul>
+    </section>
+    <section class="wrap productDisplay">
+        <select name="" class="productSelect">
+            <option value="全部" selected>全部</option>
+            <option value="床架">床架</option>
+            <option value="收納">收納</option>
+            <option value="窗簾">窗簾</option>
+        </select>
+        <ul class="productWrap">
+            <li class="productCard">
+                <h4 class="productType">新品</h4>
+                <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/dp6gW6u5hkUxxCuNi8RjbfgufygamNzdVHWb15lHZTxqZQs0gdDunQBS7F6M3MdegcQmKfLLoxHGgV3kYunUF37DNn6coPH6NqzZwRfhbsmEblpJQLqXLg4yCqUwP3IE.png"
+                    alt="">
+                <a href="#" class="addCardBtn">加入購物車</a>
+                <h3>Antony 雙人床架／雙人加大</h3>
+                <del class="originPrice">NT$18,000</del>
+                <p class="nowPrice">NT$12,000</p>
+            </li>
+            <li class="productCard">
+                <h4 class="productType">新品</h4>
+                <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/B87OUPkvlBvBl7Wyv3xj9ErOazczyGO8AFM5Nll38yEUvXMJHFXnid4g9YMzJOMq6t54ucmfgO4p7xw1azkleNYyhkEIINs8zJNbCPz1JUAZwaTKqIkaVQ3mRo2VBzAH.png"
+                    alt="">
+                <a href="#" class="addCardBtn">加入購物車</a>
+                <h3>Antony 雙人床架／雙人加大</h3>
+                <del class="originPrice">NT$18,000</del>
+                <p class="nowPrice">NT$12,000</p>
+            </li>
+            <li class="productCard">
+                <h4 class="productType">新品</h4>
+                <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/tTQQggBAfhl0vEeM7WmTwij1JbAwC7MBD2TSyjHbZHvBjnLU5tOtoGszOmODOEu6DRjzdjIpcEzeCCkmRWaL8JDJwaaWglER7P3V4JXKT7FT5gm0UL45CaHpSVlEXbKK.png"
+                    alt="">
+                <a href="#" class="addCardBtn">加入購物車</a>
+                <h3>Antony 雙人床架／雙人加大</h3>
+                <del class="originPrice">NT$18,000</del>
+                <p class="nowPrice">NT$12,000</p>
+            </li>
+            <li class="productCard">
+                <h4 class="productType">新品</h4>
+                <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/xgI6wM3uUCpkEEcauvHs67BFjGqG6Qxa9JTfOZTys6C0yJjqw5c8nJuA31gX77YVf04kZotGP9ZFQU7hLXkuoaRwNSssScpFnzfyPzYKODuyhw2QJrT1bDSim7aOBryv.png"
+                    alt="">
+                <a href="#" class="addCardBtn">加入購物車</a>
+                <h3>Antony 雙人床架／雙人加大</h3>
+                <del class="originPrice">NT$18,000</del>
+                <p class="nowPrice">NT$12,000</p>
+            </li>
+            <li class="productCard">
+                <h4 class="productType">新品</h4>
+                <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/Zr4h1Oqvc6NtAnpe5pNqJfGYyBJshAlKctfv0BTAZBqVAuvfSAWk4bcidBd8qBu1lRn5TWvib6O3UbmIAEt5w8SdB94GuFplZn6IM4SBvtxWJA2VnOqvQOsKungCPDXv.png"
+                    alt="">
+                <a href="#" class="addCardBtn">加入購物車</a>
+                <h3>Antony 雙人床架／雙人加大</h3>
+                <del class="originPrice">NT$18,000</del>
+                <p class="nowPrice">NT$12,000</p>
+            </li>
+            <li class="productCard">
+                <h4 class="productType">新品</h4>
+                <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/Tx99wDepg56aO5dGH7uGpU7REZwQLd1W0ec43M6cFw3o3z4eXTbeovq8WVseZ476BntlQnPPzaqkZgoj7xITviHMqf0kiAetjxyvuLiTmr7WdulcL364MTL321qZRJkP.png"
+                    alt="">
+                <a href="#" class="addCardBtn">加入購物車</a>
+                <h3>Antony 雙人床架／雙人加大</h3>
+                <del class="originPrice">NT$18,000</del>
+                <p class="nowPrice">NT$12,000</p>
+            </li>
+            <li class="productCard">
+                <h4 class="productType">新品</h4>
+                <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/VYPOpg83Jg7Ft5raI0eyzs6xSz0ttKzSJSklFq7il0HdwJ1iQ9kLHAU19rmkSapmyzRErTm1sxWO725W7CnowkRjwxgSyyRBo1ihGLwNbfYtgbo2nCTY9sarjqoxQbYX.png"
+                    alt="">
+                <a href="#" class="addCardBtn">加入購物車</a>
+                <h3>Antony 雙人床架／雙人加大</h3>
+                <del class="originPrice">NT$18,000</del>
+                <p class="nowPrice">NT$12,000</p>
+            </li>
+            <li class="productCard">
+                <h4 class="productType">新品</h4>
+                <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/XWnC8Of71WeSvCbkGy5MvZSyCrim50F9njuwHypcbiimd8tWscxGdecRAyaNheboQkqQAiCWK12GwuwMBvEtAarU2Y7mKTwKZIqhIExyQzbAbls7NTOdN2vX1OAyEaAN.png"
+                    alt="">
+                <a href="#" class="addCardBtn">加入購物車</a>
+                <h3>Antony 雙人床架／雙人加大</h3>
+                <del class="originPrice">NT$18,000</del>
+                <p class="nowPrice">NT$12,000</p>
+            </li>
+        </ul>
+    </section>
+    <section class="shoppingCart">
+        <h3 class="section-title">我的購物車</h3>
+        <div class="overflowWrap">
+            <table class="shoppingCart-table">
+                <tr>
+                    <th width="40%">品項</th>
+                    <th width="15%">單價</th>
+                    <th width="15%">數量</th>
+                    <th width="15%">金額</th>
+                    <th width="15%"></th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="cardItem-title">
+                            <img src="https://lh3.googleusercontent.com/pw/AL9nZEVCCpBuRSSGtbNQBVQyWF5G-9iVK0btH8MF90YUujZxNlkXAIaKcywlVvJ6V5kNrAdv1JII_ApOR9oBYMAA6Oz2X-vfF_giBlVjplEbWx977tv7a-WrAorsBGaKxGL26fbWIVLdbsOUg7KhGFPGD0-XUr_QxMEHyTbVJM9P_5mlJ_mQ4z_4LBmG6Hw3ltes4-XWerePDAZDGjt1hPy39vUFhi6AEw-4Ds3MkRA6jwYocPrPmvL63z3oaHXLqNWPDoUs5ztx8dRpbXF3WZila6L0LIgywHWoqJJqaf-LIgYMNhpS0PnG0snFOkj_kPDu2m_qr-kZICM067aWcsiXnF_6Tys1R0N8hxeSSl5zjxSuOCvN8d48XvJfEYdxfe6WqBt-SlG5o2cT4GAh41pcVUDCtuEiKwev9J6y1X6BE7wvk-fawM6ORcUJQvSlDm9eHl7eBRwJhwljjIa93TdhZqKdEYzj-OPVT31G2MIYFyZCyv0ugugngIyFYxMyP96Y344wzZ_w0U2TropRKiTAlfzAoD7P-sRj3gZGBUVBgzS5YwFBfkcQReuTfT_YSbXkc5FqQs2thyxkTO3mEExNXlc-5axlYQBlxaHdfQCorKFei8yQmPFNk54sy-E3pJB_J4Y3ZBGNkXRu37QVuJfFbM1vOFOjJKrkwG3qMqxNUPeW5oMYXFNv3ILeH-b85Jfx5rUXjIKDhyFO2MSCChblFujxuAU-cMvYJ3ovkk6pLNHZoAoPr3KM4OqMmfjVYXfO6Qii7n4bZfXOvx1vlA1DkF3APTlhFw6cOEZWje5Xqctdsj4i_Ck9E0wJl7ZElEjDqHEqX-lcfSFbD5AaK0aa8QWlCNpilRjoJSTexOeLcCj_69w9G5AiLjzIvT_3-44se2gCx8Y_Z8blVI8VoUAbb9ZH6dwVhAsLCvjC0J67AQ6QgbUK_TBo9obcajTrQgrm7pvbkMRZh2BAE2SQMDUsCGbMqY3d5lc=s80-no?authuser=0" alt="">
+                            <p>Antony 雙人床架／雙人加大</p>
+                        </div>
+                    </td>
+                    <td>NT$12,000</td>
+                    <td>1</td>
+                    <td>NT$12,000</td>
+                    <td class="discardBtn">
+                        <a href="#" class="material-icons">
+                            clear
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#" class="discardAllBtn">刪除所有品項</a>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <p>總金額</p>
+                    </td>
+                    <td>NT$13,980</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <section class="orderInfo wrap" id="orderInfo">
+        <h3 class="section-title">填寫預訂資料</h3>
+        <form action="" class="orderInfo-form">
+            <div class="orderInfo-formGroup">
+                <label for="customerName" class="orderInfo-label">姓名</label>
+                <div class="orderInfo-inputWrap">
+                    <input type="text" class="orderInfo-input" id="customerName" placeholder="請輸入姓名" name="姓名">
+                    <p class="orderInfo-message" data-message="姓名">必填</p>
+                </div>
+            </div>
+            <div class="orderInfo-formGroup">
+                <label for="customerPhone" class="orderInfo-label">電話</label>
+                <div class="orderInfo-inputWrap">
+                    <input type="tel" class="orderInfo-input" id="customerPhone" placeholder="請輸入電話" name="電話">
+                    <p class="orderInfo-message" data-message="電話">必填</p>
+                </div>
+            </div>
+            <div class="orderInfo-formGroup">
+                <label for="customerEmail" class="orderInfo-label">Email</label>
+                <div class="orderInfo-inputWrap">
+                    <input type="email" class="orderInfo-input" id="customerEmail" placeholder="請輸入 Email" name="Email">
+                    <p class="orderInfo-message" data-message="Email">必填</p>
+                </div>
+            </div>
+            <div class="orderInfo-formGroup">
+                <label for="customerAddress" class="orderInfo-label">寄送地址</label>
+                <div class="orderInfo-inputWrap">
+                    <input type="text" class="orderInfo-input" id="customerAddress" placeholder="請輸入寄送地址" name="寄送地址">
+                    <p class="orderInfo-message" data-message="寄送地址">必填</p>
+                </div>
+            </div>
+            <div class="orderInfo-formGroup">
+                <label for="tradeWay" class="orderInfo-label">交易方式</label>
+                <div class="orderInfo-inputWrap">
+                    <select id="tradeWay" class="orderInfo-input" name="交易方式">
+                        <option value="ATM" selected>ATM</option>
+                        <option value="信用卡">信用卡</option>
+                        <option value="超商付款">超商付款</option>
+                    </select>
+                </div>
+            </div>
+            <input type="submit" value="送出預訂資料" class="orderInfo-btn">
+        </form>
+    </section>
+
+
+
+
+    <!-- axios 套件 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <!-- validate.js  -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+    <!-- Load d3.js and c3.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.js"></script>
+
+
+
+    <!-- 預設 JS，請同學不要修改此處 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ele = document.querySelector('.recommendation-wall');
+            ele.style.cursor = 'grab';
+            let pos = { top: 0, left: 0, x: 0, y: 0 };
+            const mouseDownHandler = function (e) {
+                ele.style.cursor = 'grabbing';
+                ele.style.userSelect = 'none';
+
+                pos = {
+                    left: ele.scrollLeft,
+                    top: ele.scrollTop,
+                    // Get the current mouse position
+                    x: e.clientX,
+                    y: e.clientY,
+                };
+
+                document.addEventListener('mousemove', mouseMoveHandler);
+                document.addEventListener('mouseup', mouseUpHandler);
+            };
+            const mouseMoveHandler = function (e) {
+                // How far the mouse has been moved
+                const dx = e.clientX - pos.x;
+                const dy = e.clientY - pos.y;
+
+                // Scroll the element
+                ele.scrollTop = pos.top - dy;
+                ele.scrollLeft = pos.left - dx;
+            };
+            const mouseUpHandler = function () {
+                ele.style.cursor = 'grab';
+                ele.style.removeProperty('user-select');
+
+                document.removeEventListener('mousemove', mouseMoveHandler);
+                document.removeEventListener('mouseup', mouseUpHandler);
+            };
+            // Attach the handler
+            ele.addEventListener('mousedown', mouseDownHandler);
+        });
+        // menu 切換
+        let menuOpenBtn = document.querySelector('.menuToggle');
+        let linkBtn = document.querySelectorAll('.topBar-menu a');
+        let menu = document.querySelector('.topBar-menu');
+        menuOpenBtn.addEventListener('click', menuToggle);
+
+        linkBtn.forEach((item) => {
+            item.addEventListener('click', closeMenu);
+        })
+
+        function menuToggle() {
+            if (menu.classList.contains('openMenu')) {
+                menu.classList.remove('openMenu');
+            } else {
+                menu.classList.add('openMenu');
+            }
+        }
+        function closeMenu() {
+            menu.classList.remove('openMenu');
+        }
+    </script>
+
+
+
+    <script src="./javaScript/all.js"></script>
+</body>
+
+</html>
