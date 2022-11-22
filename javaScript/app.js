@@ -1,4 +1,5 @@
 // DOM
+
 // 產品列表
 const productWrap = document.querySelector('.productWrap');
 // 產品下拉選單
@@ -28,11 +29,14 @@ init();
 // 資料處理
 // 產品 -  取得產品列表
 function getProducts() {
+    // loding 動畫載入
+    toggleLoading(true);
     axios.get(`${baseUrl}/api/livejs/v1/customer/${api_path}/products`)
         .then((res) => {
             productsData = res.data.products;
             renderProductsList(productsData);
             renderProductsOption(productsData);
+            setTimeout(() => toggleLoading(false), 800);
         })
         .catch((error) => {
             console.log(error);
@@ -134,10 +138,16 @@ function renderCartsList(data) {
         </div>
        </td>
         <td>NT$${tothousands(cart.product.price)}</td>
-        <td>${cart.quantity}</td>
+        <td>
+        <div class="input-group">
+        <a href="#" data-cart-btn="minus"> - </a>
+        <input type="number" data-cart-qty  data-cart-id=${cart.id} value="${cart.quantity}"  min="1" style="max-width: 60px;">
+        <a href="#" data-cart-btn="plus"> +  </a>
+        </div>
+        </td>
         <td>NT$${tothousands(cart.product.price * cart.quantity)}</td>
         <td class="discardBtn">
-           <a href="#" class="material-icons deleteCartBtn" > clear </a>
+           <a href="#" class="material-icons" data-cart-btn="deleteCartItem"> clear </a>
         </td>
         </tr>`
     }).join('');
@@ -171,21 +181,72 @@ function addCartItem(productId, quantity) {
 // 購物車 - 功能整合(單筆刪除、修改數量)
 cartsList.addEventListener('click', (e) => {
     e.preventDefault();
-
     if (e.target.nodeName !== "A") return;
-
-    //  產品 id
+    //  購物車 id
     let cartId = e.target.closest('tr').dataset.cartId;
-    console.log(cartId);
-
-
-    //   單筆刪除
-    if (e.target.classList.contains("deleteCartBtn")) {
+    // 購物車的按鈕上的 data 值
+    let cartBtnVal = e.target.dataset.cartBtn;
+    //  單筆刪除
+    if (cartBtnVal === "deleteCartItem") {
         deleteCartItem(cartId);
     };
-
     // 修改數量
-})
+    if (cartBtnVal === "minus" || cartBtnVal === "plus") {
+        const cartItemQty = document.querySelectorAll('[data-cart-qty]');
+
+        let cartItemQtyVal = 0;
+
+        // 所有 input 跑迴圈 與 cartId 比對，相同的產品將值取出來
+        [...cartItemQty].forEach((cartItem) => {
+            if (cartItem.dataset.cartId === cartId) {
+                cartItemQtyVal = Number(cartItem.getAttribute('value'));
+            };
+        });
+
+        // 修改購物車產品數量
+        changeCartItemQty(cartId, cartBtnVal, cartItemQtyVal);
+    };
+});
+
+
+
+// 購物車 - 修改數量
+function changeCartItemQty(cartId, cartBtnVal, cartItemQty) {
+
+    // 計算購物車數量
+    let cartQtySum = cartItemQty;
+
+    // 減少數量
+    if (cartBtnVal === "minus") {
+        if (cartQtySum === 1) {
+            swalMassage("數量最少為1", "warning", 800);
+        } else {
+            cartQtySum -= 1;
+        };
+    } else if (cartBtnVal === "plus") {
+        //增加數量
+        cartQtySum += 1;
+    };
+
+    // loding 動畫載入
+    toggleLoading(true);
+
+    axios.patch(`${baseUrl}/api/livejs/v1/customer/${api_path}/carts`, {
+        "data": {
+            "id": cartId,
+            "quantity": cartQtySum
+        }
+    })
+        .then((res) => {
+            cartsData = res.data.carts;
+            renderCartsList(cartsData);
+            setTimeout(() => toggleLoading(false), 200);
+            swalMassage('購物車已更新', 'success', 800);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+};
 
 
 // 購物車 - 單筆刪除
@@ -200,7 +261,6 @@ function deleteCartItem(cartId) {
             console.log(error);
         })
 };
-
 
 
 // 購物車 - 清空購物車
