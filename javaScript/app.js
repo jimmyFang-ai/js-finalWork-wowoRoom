@@ -145,7 +145,7 @@ function renderCartsList(data) {
         <a href="#" data-cart-btn="plus"> +  </a>
         </div>
         </td>
-        <td>NT$${tothousands(cart.product.price * cart.quantity)}</td>
+        <td>NT$ ${tothousands(cart.product.price * cart.quantity)}</td>
         <td class="discardBtn">
            <a href="#" class="material-icons" data-cart-btn="deleteCartItem"> clear </a>
         </td>
@@ -220,6 +220,7 @@ function changeCartItemQty(cartId, cartBtnVal, cartItemQty) {
     if (cartBtnVal === "minus") {
         if (cartQtySum === 1) {
             swalMassage("數量最少為1", "warning", 800);
+            return;
         } else {
             cartQtySum -= 1;
         };
