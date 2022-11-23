@@ -1,5 +1,7 @@
 // DOM
 
+
+
 // 產品列表
 const productWrap = document.querySelector('.productWrap');
 // 產品下拉選單
@@ -8,6 +10,12 @@ const productSelect = document.querySelector('.productSelect');
 const cartsList = document.querySelector('#shoppingCart-list');
 // 刪除全部購物車產品
 const deleteCartsBtn = document.querySelector('.discardAllBtn');
+// 表單
+const orderInfoForm = document.querySelector('.orderInfo-form');
+const orderInfoBtn = document.querySelector('.orderInfo-btn');
+
+
+
 
 // 儲存遠端資料
 let productsData = [];
@@ -22,8 +30,6 @@ function init() {
     getCarts();
 };
 init();
-
-
 
 
 // 資料處理
@@ -42,7 +48,6 @@ function getProducts() {
             console.log(error);
         })
 };
-
 
 // 產品 -  顯示產品列表
 function renderProductsList(data) {
@@ -112,6 +117,7 @@ function getCarts() {
     axios.get(`${baseUrl}/api/livejs/v1/customer/${api_path}/carts`)
         .then((res) => {
             cartsData = res.data.carts;
+            // console.log(cartsData);
             renderCartsList(cartsData);
         })
         .catch((error) => {
@@ -129,29 +135,36 @@ function renderCartsList(data) {
     // 購物車產品金額
     const finalTotalAry = data.map((cart) => cart.product.price * cart.quantity);
 
-    cartsList.innerHTML = data.map((cart) => {
-        return `<tr data-cart-id=${cart.id}>
-        <td>
-        <div class="cardItem-title">
-            <img src="${cart.product.images}" alt="${cart.product.title}">
-            <p>${cart.product.title}</p>
-        </div>
-       </td>
-        <td>NT$${tothousands(cart.product.price)}</td>
-        <td>
-        <div class="input-group">
-        <a href="#" data-cart-btn="minus"> - </a>
-        <input type="number" data-cart-qty  data-cart-id=${cart.id} value="${cart.quantity}"  min="1" style="max-width: 60px;">
-        <a href="#" data-cart-btn="plus"> +  </a>
-        </div>
-        </td>
-        <td>NT$ ${tothousands(cart.product.price * cart.quantity)}</td>
-        <td class="discardBtn">
-           <a href="#" class="material-icons" data-cart-btn="deleteCartItem"> clear </a>
+    if (cartsData.length > 0) {
+        cartsList.innerHTML = data.map((cart) => {
+            return `<tr data-cart-id=${cart.id}>
+            <td>
+            <div class="cardItem-title">
+                <img src="${cart.product.images}" alt="${cart.product.title}">
+                <p>${cart.product.title}</p>
+            </div>
+           </td>
+            <td>NT$${tothousands(cart.product.price)}</td>
+            <td>
+            <div class="input-group">
+            <a href="#" data-cart-btn="minus"> - </a>
+            <input type="number" data-cart-qty  data-cart-id=${cart.id} value="${cart.quantity}"  min="1" style="max-width: 60px;">
+            <a href="#" data-cart-btn="plus"> +  </a>
+            </div>
+            </td>
+            <td>NT$ ${tothousands(cart.product.price * cart.quantity)}</td>
+            <td class="discardBtn">
+               <a href="#" class="material-icons" data-cart-btn="deleteCartItem"> clear </a>
+            </td>
+            </tr>`
+        }).join('');
+    } else {
+        cartsList.innerHTML = `<tr class="text-center">
+        <td colspan="6">
+            <h3>購物車內沒有產品，趕快去選購吧!</h3>
         </td>
         </tr>`
-    }).join('');
-
+    };
 
     // 顯示購物車內的產品總價
     cartFinalTotal.textContent = `NT$${calcTotalPrice(finalTotalAry)}`;
@@ -175,7 +188,6 @@ function addCartItem(productId, quantity) {
             console.log(error);
         })
 };
-
 
 
 // 購物車 - 功能整合(單筆刪除、修改數量)
@@ -207,7 +219,6 @@ cartsList.addEventListener('click', (e) => {
         changeCartItemQty(cartId, cartBtnVal, cartItemQtyVal);
     };
 });
-
 
 
 // 購物車 - 修改數量
@@ -268,19 +279,149 @@ function deleteCartItem(cartId) {
 deleteCartsBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
-    if (cartsData.length > 0) {
-        axios.delete(`${baseUrl}/api/livejs/v1/customer/${api_path}/carts`)
-            .then((res) => {
-                const { carts, message } = res.data
-                cartsData = carts;
-                renderCartsList(cartsData);
-                swalMassage(message, 'success', 800);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    } else {
+    if (cartsData.length === 0) {
         e.target.setAttribute("disabled", "");
         swalMassage('購物車產品數量不得為 0', 'warning', 800);
-    }
+        return;
+    };
+
+    axios.delete(`${baseUrl}/api/livejs/v1/customer/${api_path}/carts`)
+        .then((res) => {
+            const { carts, message } = res.data
+            cartsData = carts;
+            renderCartsList(cartsData);
+            swalMassage(message, 'success', 800);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
 });
+
+
+
+// 表單 - 驗證功能
+orderInfoBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // DOM 
+    // 所有表單 inupt
+    const orderInfoInputs = document.querySelectorAll('input[name],select[id=tradeWay]');
+    const customerName = document.querySelector('#customerName');
+    const customerPhone = document.querySelector('#customerPhone');
+    const customerEmail = document.querySelector('#customerEmail');
+    const customerAddress = document.querySelector('#customerAddress');
+    const tradeWay = document.querySelector('#tradeWay');
+
+
+    // 存放顧客表單欄位資訊的值
+    const customerFormInfo = {
+        "name": customerName.value,
+        "tel": customerPhone.value,
+        "email": customerEmail.value,
+        "address": customerAddress.value,
+        "payment": tradeWay.value
+    };
+
+
+    // validate 套件的驗證規則
+    const constraints = {
+        "姓名": {
+            presence: {
+                message: "必填欄位"
+            }
+        },
+        "手機號碼": {
+            presence: {
+                message: "是必填的欄位"
+            },
+            format: {
+                pattern: /^09\d{2}-?\d{3}-?\d{3}$/,
+                message: "開頭須為09"
+            },
+            length: {
+                is: 10,
+                message: "長度須為10碼"
+            }
+        },
+        "信箱": {
+            presence: {
+                message: "是必填的欄位"
+            },
+            format: {
+                pattern: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
+                message: "格式輸入錯誤，需有@ 、.等符號"
+            },
+        },
+        "寄送地址": {
+            presence: {
+                message: "是必填欄位"
+            }
+        },
+        "交易方式": {
+            presence: {
+                message: "是必填欄位"
+            }
+        },
+    };
+
+    // // change 驗證欄位
+    orderInfoInputs.forEach((input) => {
+        input.addEventListener("change", function () {
+            input.nextElementSibling.textContent = '';
+            let errors = validate(orderInfoForm, constraints) || '';
+            formCheck(errors);
+        });
+    });
+
+
+    // 判斷購物車是否有產品
+    if (cartsData.length === 0) {
+        swalMassage('購物車內沒有產品，請去選購', 'warning', 800);
+        return;
+    };
+
+
+    // validate 套件 驗證表單內的欄位規則
+    let errors = validate(orderInfoForm, constraints);
+    if (errors) {
+        formCheck(errors);
+        swalMassage('表單欄位需填寫完整', 'warning', 800);
+    } else {
+        creatOrderForm(customerFormInfo);
+        orderInfoForm.reset();
+    };
+});
+
+
+
+
+// 表單 -  驗證錯誤提示訊息
+function formCheck(errors) {
+    Object.keys(errors).forEach(function (keys) {
+        // console.log(document.querySelector(`[data-message=${keys}]`))
+        document.querySelector(`[data-message="${keys}"]`).textContent = errors[keys];
+    });
+};
+
+
+
+// 表單 - 送出購買訂單
+function creatOrderForm(customerFormInfo) {
+    axios.post(`${baseUrl}/api/livejs/v1/customer/${api_path}/orders`, {
+        "data": {
+            "user": customerFormInfo
+        }
+    })
+        .then((res) => {
+            console.log(res);
+            swalMassage('表單已送出', 'success', 800);
+            getCarts();
+            cartsData = [];
+            console.log(cartsData);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+};
+
+// 購物車資料沒被清空 cartsData

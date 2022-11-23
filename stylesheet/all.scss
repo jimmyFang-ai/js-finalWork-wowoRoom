@@ -75,7 +75,13 @@ body {
   font-weight: bold;
 }
 
+.w-100 {
+  width: 100%;
+}
 
+.text-center{
+  text-align: center;
+}
 
 .input-group {
    display: flex;
@@ -817,17 +823,17 @@ body {
   margin-right: 10px;
 }
 
-.orderInfo-inputWrap {
-  position: relative;
-}
+// .orderInfo-inputWrap {
+//   position: relative;
+// }
 
 .orderInfo-message {
-  position: absolute;
+  // position: absolute;
   white-space: nowrap;
   left: 103%;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  -webkit-transform: translateY(20%);
+          transform: translateY(20%);
   color: #C72424;
 }
 

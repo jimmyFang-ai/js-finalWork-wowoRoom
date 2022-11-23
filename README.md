@@ -24,20 +24,26 @@
         - [x] 修改購物車內的單筆產品數量
         - [x] 清空購物車
         - [x] 優化使用者體驗
-        - 使用 [sweetalert2](https://sweetalert2.github.io/#usage) 套件，製作提示使用者訊息。
-        - 增加 [loading](https://loading.io/) 動畫
+             - 使用 [sweetalert2](https://sweetalert2.github.io/#usage) 套件，製作提示使用者訊息。
+             - 增加 [loading](https://loading.io/) 動畫
   
     - [ ] 串接建立訂單 API 流程設計
-
+           - [x]表單驗證功能(click + change)
+           - [x]表單阻擋功能(購物車產品不得為 0 )
+           - [x]整理送出購買訂單API，需要的資料格式。
+           - [x]表單送出後，清空表單欄位的資訊。
+           - 優化使用者體驗
+            - 使用 [sweetalert2](https://sweetalert2.github.io/#usage) 套件，製作提示使用者訊息。
+            - 使用 [validatejs](https://validatejs.org/) 套件，製作驗證表單欄位規則。
 - [ ] 後台開發
     - [ ] 訂單列表設計
     - [ ] C3.js 圖表設計
 
 - [ ] 優化細節
-    - [ ] 使用者體驗
+    - [x] 使用者體驗
     - [x] 千分位設計
     - [x] 計算總金額
-    - [ ] 表單驗證
+    - [x] 表單驗證
 
 
 ## 使用套件
