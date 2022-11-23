@@ -117,7 +117,6 @@ function getCarts() {
     axios.get(`${baseUrl}/api/livejs/v1/customer/${api_path}/carts`)
         .then((res) => {
             cartsData = res.data.carts;
-            // console.log(cartsData);
             renderCartsList(cartsData);
         })
         .catch((error) => {
@@ -148,13 +147,13 @@ function renderCartsList(data) {
             <td>
             <div class="input-group">
             <a href="#" data-cart-btn="minus"> - </a>
-            <input type="number" data-cart-qty  data-cart-id=${cart.id} value="${cart.quantity}"  min="1" style="max-width: 60px;">
+            <input type="number" data-cart-qty  data-cart-id="${cart.id}" value="${cart.quantity}"  min="1" style="max-width: 60px;">
             <a href="#" data-cart-btn="plus"> +  </a>
             </div>
             </td>
             <td>NT$ ${tothousands(cart.product.price * cart.quantity)}</td>
             <td class="discardBtn">
-               <a href="#" class="material-icons" data-cart-btn="deleteCartItem"> clear </a>
+               <a href="#" class="material-icons" data-cart-item="${cart.product.title}" data-cart-btn="deleteCartItem"> clear </a>
             </td>
             </tr>`
         }).join('');
@@ -181,6 +180,7 @@ function addCartItem(productId, quantity) {
     })
         .then((res) => {
             cartsData = res.data.carts;
+            console.log(cartsData);
             renderCartsList(cartsData);
             swalMassage("已加入購物車", "success", 800);
         })
@@ -200,8 +200,10 @@ cartsList.addEventListener('click', (e) => {
     let cartBtnVal = e.target.dataset.cartBtn;
     //  單筆刪除
     if (cartBtnVal === "deleteCartItem") {
-        deleteCartItem(cartId);
+        const cartItemTitle = e.target.dataset.cartItem;
+        deleteCartItem(cartId, cartItemTitle);
     };
+
     // 修改數量
     if (cartBtnVal === "minus" || cartBtnVal === "plus") {
         const cartItemQty = document.querySelectorAll('[data-cart-qty]');
@@ -253,7 +255,7 @@ function changeCartItemQty(cartId, cartBtnVal, cartItemQty) {
             cartsData = res.data.carts;
             renderCartsList(cartsData);
             setTimeout(() => toggleLoading(false), 200);
-            swalMassage('購物車已更新', 'success', 800);
+            swalMassage('購物車商品數量已更新', 'success', 800);
         })
         .catch((error) => {
             console.log(error);
@@ -262,12 +264,12 @@ function changeCartItemQty(cartId, cartBtnVal, cartItemQty) {
 
 
 // 購物車 - 單筆刪除
-function deleteCartItem(cartId) {
+function deleteCartItem(cartId, cartItemTitle) {
     axios.delete(`${baseUrl}/api/livejs/v1/customer/${api_path}/carts/${cartId}`)
         .then((res) => {
             cartsData = res.data.carts;
             renderCartsList(cartsData);
-            swalMassage("已刪除單筆產品", "success", 800)
+            swalMassage(`刪除${cartItemTitle} 產品成功 `, "success", 800)
         })
         .catch((error) => {
             console.log(error);
@@ -281,7 +283,7 @@ deleteCartsBtn.addEventListener('click', (e) => {
 
     if (cartsData.length === 0) {
         e.target.setAttribute("disabled", "");
-        swalMassage('購物車產品數量不得為 0', 'warning', 800);
+        swalMassage('購物車內已經沒有商品了', 'warning', 800);
         return;
     };
 
@@ -394,7 +396,6 @@ orderInfoBtn.addEventListener('click', (e) => {
 
 
 
-
 // 表單 -  驗證錯誤提示訊息
 function formCheck(errors) {
     Object.keys(errors).forEach(function (keys) {
@@ -416,12 +417,12 @@ function creatOrderForm(customerFormInfo) {
             console.log(res);
             swalMassage('表單已送出', 'success', 800);
             getCarts();
-            cartsData = [];
-            console.log(cartsData);
         })
         .catch((error) => {
             console.log(error);
         })
 };
 
-// 購物車資料沒被清空 cartsData
+
+
+
