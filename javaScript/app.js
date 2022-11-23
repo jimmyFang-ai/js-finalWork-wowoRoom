@@ -1,7 +1,4 @@
 // DOM
-
-
-
 // 產品列表
 const productWrap = document.querySelector('.productWrap');
 // 產品下拉選單
@@ -325,7 +322,37 @@ orderInfoBtn.addEventListener('click', (e) => {
     };
 
 
-    // validate 套件的驗證規則
+    // change 驗證欄位
+    orderInfoInputs.forEach((input) => {
+        input.addEventListener("change", function () {
+            input.nextElementSibling.textContent = '';
+            let errors = validate(orderInfoForm, validateRules()) || '';
+            formCheck(errors);
+        });
+    });
+
+
+    // 判斷購物車是否有產品
+    if (cartsData.length === 0) {
+        swalMassage('購物車內沒有產品，請去選購', 'warning', 800);
+        return;
+    };
+
+
+    // validate 套件 驗證表單內的欄位規則
+    let errors = validate(orderInfoForm, validateRules());
+    if (errors) {
+        formCheck(errors);
+        swalMassage('表單欄位需填寫完整', 'warning', 800);
+    } else {
+        creatOrderForm(customerFormInfo);
+        orderInfoForm.reset();
+    };
+});
+
+
+// validate 套件的驗證規則
+function validateRules() {
     const constraints = {
         "姓名": {
             presence: {
@@ -366,34 +393,8 @@ orderInfoBtn.addEventListener('click', (e) => {
         },
     };
 
-    // // change 驗證欄位
-    orderInfoInputs.forEach((input) => {
-        input.addEventListener("change", function () {
-            input.nextElementSibling.textContent = '';
-            let errors = validate(orderInfoForm, constraints) || '';
-            formCheck(errors);
-        });
-    });
-
-
-    // 判斷購物車是否有產品
-    if (cartsData.length === 0) {
-        swalMassage('購物車內沒有產品，請去選購', 'warning', 800);
-        return;
-    };
-
-
-    // validate 套件 驗證表單內的欄位規則
-    let errors = validate(orderInfoForm, constraints);
-    if (errors) {
-        formCheck(errors);
-        swalMassage('表單欄位需填寫完整', 'warning', 800);
-    } else {
-        creatOrderForm(customerFormInfo);
-        orderInfoForm.reset();
-    };
-});
-
+    return constraints;
+};
 
 
 // 表單 -  驗證錯誤提示訊息
