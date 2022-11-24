@@ -36,13 +36,13 @@
             - 使用 [sweetalert2](https://sweetalert2.github.io/#usage) 套件，製作提示使用者訊息。
             - 使用 [validatejs](https://validatejs.org/) 套件，製作驗證表單欄位規則。
 - [ ] 後台開發
-    - [ ] 訂單列表設計
+    - [x] 訂單列表設計
          - [x] 取得訂單列表 
-         - [ ] 刪除單筆訂單 
-         - [ ] 刪除全部訂單
+         - [x] 刪除單筆訂單 
+         - [x] 刪除全部訂單
               -  <a href="#">${order.paid ? "已處理" : "未處理"}</a>
-         - [ ] 修改訂單狀態 
-         - [ ] 處理日期格式 (timestamp)
+         - [x] 修改訂單狀態 
+         - [x] 處理日期格式 (timestamp)
 
     - [ ] C3.js 圖表設計
 
