@@ -35,8 +35,6 @@ function toggleLoading(show) {
 };
 
 
-
-
 // 日期格式處理
 function timeDate(time) {
     // 時間要轉為毫秒要 13位數
@@ -45,4 +43,4 @@ function timeDate(time) {
 };
 
 
-export { tothousands, calcTotalPrice, swalMassage, toggleLoading, timeDate };
+export { tothousands, calcTotalPrice, swalMassage,toggleLoading, timeDate };

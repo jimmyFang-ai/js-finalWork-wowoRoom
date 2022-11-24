@@ -1,8 +1,7 @@
-// 匯入js
-// 測試中
-import { tothousands, calcTotalPrice, swalMassage, toggleLoading } from './utils.js';
-import { baseUrl, api_path } from './api-config.js';
-
+// 匯入 共用工具
+import * as utils from './utils.js';
+// 匯入 共用 API
+import * as api from './api.js';
 
 // DOM
 // 產品列表
@@ -17,12 +16,9 @@ const deleteCartsBtn = document.querySelector('.discardAllBtn');
 const orderInfoForm = document.querySelector('.orderInfo-form');
 const orderInfoBtn = document.querySelector('.orderInfo-btn');
 
-
-
 // 儲存遠端資料
 let productsData = [];
 let cartsData = [];
-
 
 // 初始化
 function init() {
@@ -33,18 +29,17 @@ function init() {
 };
 init();
 
-
-// 資料處理
 // 產品 -  取得產品列表
 function getProducts() {
     // loding 動畫載入
-    toggleLoading(true);
-    axios.get(`${baseUrl}/api/livejs/v1/customer/${api_path}/products`)
+    utils.toggleLoading(true);
+    api.apiGetProducts()
         .then((res) => {
+            console.log(res);
             productsData = res.data.products;
             renderProductsList(productsData);
             renderProductsOption(productsData);
-            setTimeout(() => toggleLoading(false), 800);
+            setTimeout(() => utils.toggleLoading(false), 800);
         })
         .catch((error) => {
             console.log(error);
@@ -59,12 +54,11 @@ function renderProductsList(data) {
         <img src="${product.images}" alt="${product.title}">
         <a href="#" class="addCardBtn">加入購物車</a>
         <h3>${product.title}</h3>
-        <del class="originPrice">NT$${tothousands(product.origin_price)}</del>
-        <p class="nowPrice">NT$${tothousands(product.price)}</p>
+        <del class="originPrice">NT$${utils.tothousands(product.origin_price)}</del>
+        <p class="nowPrice">NT$${utils.tothousands(product.price)}</p>
     </li>`
     }).join('');
 };
-
 
 // 產品 - 顯示 select 下拉選單選項
 function renderProductsOption(data) {
@@ -80,7 +74,6 @@ function renderProductsOption(data) {
     productSelect.innerHTML = optionsList;
 };
 
-
 // 產品 -  篩選產品類別
 productSelect.addEventListener('click', (e) => {
     let productCategory = e.target.value;
@@ -88,7 +81,6 @@ productSelect.addEventListener('click', (e) => {
     const filterProducts = productsData.filter((product) => product.category === productCategory);
     productCategory === "全部" ? renderProductsList(productsData) : renderProductsList(filterProducts);
 });
-
 
 // 產品 - 新增產品到購物車
 productWrap.addEventListener('click', (e) => {
@@ -113,10 +105,9 @@ productWrap.addEventListener('click', (e) => {
     addCartItem(productId, productQty);
 });
 
-
-// 購物車 - 取得購物車列表 
+// 購物車 - 取得購物車列表
 function getCarts() {
-    axios.get(`${baseUrl}/api/livejs/v1/customer/${api_path}/carts`)
+    api.apiGetCarts()
         .then((res) => {
             cartsData = res.data.carts;
             renderCartsList(cartsData);
@@ -125,7 +116,6 @@ function getCarts() {
             console.log(error);
         })
 };
-
 
 // 購物車 - 顯示購物車列表
 function renderCartsList(data) {
@@ -145,7 +135,7 @@ function renderCartsList(data) {
                 <p>${cart.product.title}</p>
             </div>
            </td>
-            <td>NT$${tothousands(cart.product.price)}</td>
+            <td>NT$${utils.tothousands(cart.product.price)}</td>
             <td>
             <div class="input-group">
             <a href="#" data-cart-btn="minus"> - </a>
@@ -153,7 +143,7 @@ function renderCartsList(data) {
             <a href="#" data-cart-btn="plus"> +  </a>
             </div>
             </td>
-            <td>NT$ ${tothousands(cart.product.price * cart.quantity)}</td>
+            <td>NT$ ${utils.tothousands(cart.product.price * cart.quantity)}</td>
             <td class="discardBtn">
                <a href="#" class="material-icons" data-cart-item="${cart.product.title}" data-cart-btn="deleteCartItem"> clear </a>
             </td>
@@ -168,13 +158,12 @@ function renderCartsList(data) {
     };
 
     // 顯示購物車內的產品總價
-    cartFinalTotal.textContent = `NT$${calcTotalPrice(finalTotalAry)}`;
+    cartFinalTotal.textContent = `NT$${utils.calcTotalPrice(finalTotalAry)}`;
 };
-
 
 // 購物車 - 新增產品
 function addCartItem(productId, quantity) {
-    axios.post(`${baseUrl}/api/livejs/v1/customer/${api_path}/carts`, {
+    api.apiAddCart({
         "data": {
             productId,
             quantity
@@ -184,13 +173,12 @@ function addCartItem(productId, quantity) {
             cartsData = res.data.carts;
             console.log(cartsData);
             renderCartsList(cartsData);
-            swalMassage("已加入購物車", "success", 800);
+            utils.swalMassage("已加入購物車", "success", 800);
         })
         .catch((error) => {
             console.log(error);
         })
 };
-
 
 // 購物車 - 功能整合(單筆刪除、修改數量)
 cartsList.addEventListener('click', (e) => {
@@ -224,7 +212,6 @@ cartsList.addEventListener('click', (e) => {
     };
 });
 
-
 // 購物車 - 修改數量
 function changeCartItemQty(cartId, cartBtnVal, cartItemQty) {
 
@@ -234,7 +221,7 @@ function changeCartItemQty(cartId, cartBtnVal, cartItemQty) {
     // 減少數量
     if (cartBtnVal === "minus") {
         if (cartQtySum === 1) {
-            swalMassage("數量最少為1", "warning", 800);
+            utils.swalMassage("產品數量最少為1", "warning", 800);
             return;
         } else {
             cartQtySum -= 1;
@@ -244,10 +231,10 @@ function changeCartItemQty(cartId, cartBtnVal, cartItemQty) {
         cartQtySum += 1;
     };
 
-    // loding 動畫載入
-    toggleLoading(true);
+    // // loding 動畫載入
+    utils.toggleLoading(true);
 
-    axios.patch(`${baseUrl}/api/livejs/v1/customer/${api_path}/carts`, {
+    api.apiUpdateCart({
         "data": {
             "id": cartId,
             "quantity": cartQtySum
@@ -256,28 +243,26 @@ function changeCartItemQty(cartId, cartBtnVal, cartItemQty) {
         .then((res) => {
             cartsData = res.data.carts;
             renderCartsList(cartsData);
-            setTimeout(() => toggleLoading(false), 200);
-            swalMassage('購物車商品數量已更新', 'success', 800);
+            setTimeout(() => utils.toggleLoading(false), 200);
+            utils.swalMassage('購物車商品數量已更新', 'success', 800);
         })
         .catch((error) => {
             console.log(error);
         })
 };
-
 
 // 購物車 - 單筆刪除
 function deleteCartItem(cartId, cartItemTitle) {
-    axios.delete(`${baseUrl}/api/livejs/v1/customer/${api_path}/carts/${cartId}`)
+    api.apiDeleteCart(cartId)
         .then((res) => {
             cartsData = res.data.carts;
             renderCartsList(cartsData);
-            swalMassage(`刪除${cartItemTitle} 產品成功 `, "success", 800)
+            utils.swalMassage(`刪除${cartItemTitle} 產品成功 `, "success", 800)
         })
         .catch((error) => {
             console.log(error);
         })
 };
-
 
 // 購物車 - 清空購物車
 deleteCartsBtn.addEventListener('click', (e) => {
@@ -285,16 +270,16 @@ deleteCartsBtn.addEventListener('click', (e) => {
 
     if (cartsData.length === 0) {
         e.target.setAttribute("disabled", "");
-        swalMassage('購物車內已經沒有商品了', 'warning', 800);
+        utils.swalMassage('購物車內已經沒有商品了', 'warning', 800);
         return;
     };
 
-    axios.delete(`${baseUrl}/api/livejs/v1/customer/${api_path}/carts`)
+    api.apiDeleteAllCarts()
         .then((res) => {
             const { carts, message } = res.data
             cartsData = carts;
             renderCartsList(cartsData);
-            swalMassage(message, 'success', 800);
+            utils.swalMassage(message, 'success', 800);
         })
         .catch((error) => {
             console.log(error);
@@ -302,12 +287,11 @@ deleteCartsBtn.addEventListener('click', (e) => {
 });
 
 
-
 // 表單 - 驗證功能
 orderInfoBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
-    // DOM 
+    // DOM
     // 所有表單 inupt
     const orderInfoInputs = document.querySelectorAll('input[name],select[id=tradeWay]');
     const customerName = document.querySelector('#customerName');
@@ -339,7 +323,7 @@ orderInfoBtn.addEventListener('click', (e) => {
 
     // 判斷購物車是否有產品
     if (cartsData.length === 0) {
-        swalMassage('購物車內沒有產品，請去選購', 'warning', 800);
+        utils.swalMassage('購物車內沒有產品，請去選購', 'warning', 800);
         return;
     };
 
@@ -348,7 +332,7 @@ orderInfoBtn.addEventListener('click', (e) => {
     let errors = validate(orderInfoForm, validateRules());
     if (errors) {
         formCheck(errors);
-        swalMassage('表單欄位需填寫完整', 'warning', 800);
+        utils.swalMassage('表單欄位需填寫完整', 'warning', 800);
     } else {
         creatOrderForm(customerFormInfo);
         orderInfoForm.reset();
@@ -410,18 +394,17 @@ function formCheck(errors) {
     });
 };
 
-
-
 // 表單 - 送出購買訂單
 function creatOrderForm(customerFormInfo) {
-    axios.post(`${baseUrl}/api/livejs/v1/customer/${api_path}/orders`, {
-        "data": {
-            "user": customerFormInfo
+    api.apiAddOrder(
+        {
+            "data": {
+                "user": customerFormInfo
+            }
         }
-    })
+    )
         .then((res) => {
-            console.log(res);
-            swalMassage('表單已送出', 'success', 800);
+            utils.swalMassage('表單已送出', 'success', 800);
             getCarts();
         })
         .catch((error) => {

@@ -1,8 +1,8 @@
-// 匯入 js
-import { baseUrl, api_path, auth_token } from './api-config.js';
+
+// 匯入 共用工具
 import { swalMassage, timeDate } from './utils.js';
-// console.log(swalMassage);
-// console.log(baseUrl, api_path, auth_token);
+// 匯入 共用 API
+import * as api from './api.js';
 
 
 // DOM
@@ -16,19 +16,15 @@ let orderData = [];
 // 初始化
 function adminInit() {
     getOrders();
+    // renderC3Chart();
 };
-
 adminInit();
 
 
 
 // 訂購表單 - 取得客戶訂單資料
 function getOrders() {
-    axios.get(`${baseUrl}/api/livejs/v1/admin/${api_path}/orders`, {
-        headers: {
-            'Authorization': auth_token,
-        }
-    })
+    api.apiGetOrders()
         .then((res) => {
             orderData = res.data.orders;
             // 顯示訂單列表
@@ -38,7 +34,6 @@ function getOrders() {
             console.log(error);
         })
 };
-
 
 
 // 訂購表單 - 顯示客戶訂單列表
@@ -103,11 +98,7 @@ orderList.addEventListener('click', (e) => {
 
 // 訂購表單 - 刪除單一訂單
 function deleteOrderItem(orderId) {
-    axios.delete(`${baseUrl}/api/livejs/v1/admin/${api_path}/orders/${orderId}`, {
-        headers: {
-            'Authorization': auth_token,
-        }
-    })
+    api.apiDeleteOrder(orderId)
         .then((res) => {
             orderData = res.data.orders;
             // 顯示訂單列表
@@ -123,18 +114,12 @@ function deleteOrderItem(orderId) {
 
 // 訂購表單 - 修改全部狀態
 function changeOrderStatus(orderId, checkStatus) {
-    axios.put(`${baseUrl}/api/livejs/v1/admin/${api_path}/orders`,
-        {
-            "data": {
-                "id": orderId,
-                "paid": checkStatus
-            }
-        },
-        {
-            headers: {
-                'Authorization': auth_token,
-            }
-        })
+    api.apiUpdateOrder({
+        "data": {
+            "id": orderId,
+            "paid": checkStatus
+        }
+    })
         .then((res) => {
             orderData = res.data.orders;
             // 顯示訂單列表
@@ -158,11 +143,7 @@ deleteOrdersBtn.addEventListener('click', (e) => {
         return;
     };
 
-    axios.delete(`${baseUrl}/api/livejs/v1/admin/${api_path}/orders`, {
-        headers: {
-            'Authorization': auth_token,
-        }
-    })
+    api.apiDeleteAllOrders()
         .then((res) => {
             console.log(res);
             // 解構取出客戶訂單資料
@@ -179,6 +160,27 @@ deleteOrdersBtn.addEventListener('click', (e) => {
 
 
 
+// // C3.js 圖表設計
+// function renderC3Chart() {
+//     let chart = c3.generate({
+//         bindto: '#chart', // HTML 元素綁定
+//         data: {
+//             type: "pie",
+//             columns: [
+//                 ['Louvre 雙人床架', 1],
+//                 ['Antony 雙人床架', 2],
+//                 ['Anty 雙人床架', 3],
+//                 ['其他', 4],
+//             ],
+//             colors: {
+//                 "Louvre 雙人床架": "#DACBFF",
+//                 "Antony 雙人床架": "#9D7FEA",
+//                 "Anty 雙人床架": "#5434A7",
+//                 "其他": "#301E5F",
+//             }
+//         },
+//     });
+// }
 
 
 
@@ -206,48 +208,3 @@ deleteOrdersBtn.addEventListener('click', (e) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 圖表
-// C3.js
-let chart = c3.generate({
-    bindto: '#chart', // HTML 元素綁定
-    data: {
-        type: "pie",
-        columns: [
-            ['Louvre 雙人床架', 1],
-            ['Antony 雙人床架', 2],
-            ['Anty 雙人床架', 3],
-            ['其他', 4],
-        ],
-        colors: {
-            "Louvre 雙人床架": "#DACBFF",
-            "Antony 雙人床架": "#9D7FEA",
-            "Anty 雙人床架": "#5434A7",
-            "其他": "#301E5F",
-        }
-    },
-});

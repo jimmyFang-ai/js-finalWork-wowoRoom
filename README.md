@@ -10,7 +10,7 @@
     - [x] 載入套件資源(bootstrap、axios、C3.js...)
     - [x] API config 設定確認
 
-- [ ] 前台開發
+- [x] 前台開發
     - [x] 串接產品 API 流程設計
         - [x] 取得產品資料
         - [x] 顯示產品列表
@@ -27,7 +27,7 @@
              - 使用 [sweetalert2](https://sweetalert2.github.io/#usage) 套件，製作提示使用者訊息。
              - 增加 [loading](https://loading.io/) 動畫
   
-    - [ ] 串接建立訂單 API 流程設計
+    - [x] 串接建立訂單 API 流程設計
            - [x]表單驗證功能(click + change)
            - [x]表單阻擋功能(購物車產品不得為 0 )
            - [x]整理送出購買訂單API，需要的資料格式。
@@ -40,23 +40,21 @@
          - [x] 取得訂單列表 
          - [x] 刪除單筆訂單 
          - [x] 刪除全部訂單
-              -  <a href="#">${order.paid ? "已處理" : "未處理"}</a>
          - [x] 修改訂單狀態 
          - [x] 處理日期格式 (timestamp)
 
     - [ ] C3.js 圖表設計
-
 - [ ] 優化細節
     - [x] 使用者體驗
     - [x] 千分位設計
     - [x] 計算總金額
     - [x] 表單驗證
 
-- [ ] 備註
-     定義資料結構?  每個API 都是獨立的資料不用再全域定義資料
+
 
 ## 使用套件
 - [C3.js](https://c3js.org/)
 - [axios](https://github.com/axios/axios)
 - [validate.js](https://validatejs.org/)
 - [sweetalert2](https://sweetalert2.github.io/)
+- [Bootstrap 5]([Bootstrap](https://bootstrap5.hexschool.com/docs/5.1/getting-started/introduction/))
