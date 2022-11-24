@@ -1,3 +1,9 @@
+// 匯入js
+// 測試中
+import { tothousands, calcTotalPrice, swalMassage, toggleLoading } from './utils.js';
+import { baseUrl, api_path } from './api-config.js';
+
+
 // DOM
 // 產品列表
 const productWrap = document.querySelector('.productWrap');
@@ -10,7 +16,6 @@ const deleteCartsBtn = document.querySelector('.discardAllBtn');
 // 表單
 const orderInfoForm = document.querySelector('.orderInfo-form');
 const orderInfoBtn = document.querySelector('.orderInfo-btn');
-
 
 
 
@@ -109,7 +114,7 @@ productWrap.addEventListener('click', (e) => {
 });
 
 
-// 購物車 - 取得購物車列表
+// 購物車 - 取得購物車列表 
 function getCarts() {
     axios.get(`${baseUrl}/api/livejs/v1/customer/${api_path}/carts`)
         .then((res) => {

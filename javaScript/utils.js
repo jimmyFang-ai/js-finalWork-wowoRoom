@@ -28,7 +28,6 @@ function swalMassage(title, icon, time) {
 };
 
 
-
 // loading 載入動態
 function toggleLoading(show) {
     //show的參數，從外部傳入如果是true 就 開啟loading，flase 就關閉
@@ -38,23 +37,12 @@ function toggleLoading(show) {
 
 
 
-// menu 切換
-let menuOpenBtn = document.querySelector('.menuToggle');
-let linkBtn = document.querySelectorAll('.topBar-menu a');
-let menu = document.querySelector('.topBar-menu');
-menuOpenBtn.addEventListener('click', menuToggle);
+// 日期格式處理
+function timeDate(time) {
+    // 時間要轉為毫秒要 13位數
+    const timeStamp = new Date(time * 1000);
+    return `${timeStamp.getFullYear()} / ${timeStamp.getMonth() + 1} / ${timeStamp.getDate()}`;
+};
 
-linkBtn.forEach((item) => {
-    item.addEventListener('click', closeMenu);
-})
 
-function menuToggle() {
-    if (menu.classList.contains('openMenu')) {
-        menu.classList.remove('openMenu');
-    } else {
-        menu.classList.add('openMenu');
-    }
-}
-function closeMenu() {
-    menu.classList.remove('openMenu');
-}
+export { tothousands, calcTotalPrice, swalMassage, toggleLoading, timeDate };

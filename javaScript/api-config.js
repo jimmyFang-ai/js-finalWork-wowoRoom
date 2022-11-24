@@ -1,4 +1,6 @@
-let baseUrl = "https://livejs-api.hexschool.io";
-let api_path = "testwoworoom";
+const baseUrl = "https://livejs-api.hexschool.io";
+const api_path = "testwoworoom";
 // 後台使用
-let auth_token = "weyzH1bcy7OlBO4rWQR44F07FE23";
+const auth_token = "weyzH1bcy7OlBO4rWQR44F07FE23";
+
+export { baseUrl, api_path, auth_token }
