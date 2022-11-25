@@ -1,8 +1,6 @@
 // 匯入 c3.js
 import 'https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js';
 import 'https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.js';
-
-
 // 匯入 共用工具
 import { swalMassage, timeDate } from './utils.js';
 // 匯入 共用 API
@@ -20,7 +18,6 @@ let orderData = [];
 // 初始化
 function adminInit() {
     getOrders();
-    // renderC3Chart();
 };
 adminInit();
 
@@ -33,8 +30,8 @@ function getOrders() {
             orderData = res.data.orders;
             // 顯示訂單列表
             renderOrderLists(orderData);
-
-            renderC3Chart();
+            // 顯示 C3 圖表
+            renderC3Chart_LV2(orderData);
         })
         .catch((error) => {
             console.log(error);
@@ -109,6 +106,8 @@ function deleteOrderItem(orderId) {
             orderData = res.data.orders;
             // 顯示訂單列表
             renderOrderLists(orderData);
+            // 顯示 C3 圖表
+            renderC3Chart_LV2(orderData);
             swalMassage(`訂單編號: ${orderId} 已成功刪除!`, 'success', 800);
         })
         .catch((error) => {
@@ -157,6 +156,8 @@ deleteOrdersBtn.addEventListener('click', (e) => {
             orderData = orders;
             // 顯示訂單列表
             renderOrderLists(orderData);
+            // 顯示 C3 圖表
+            renderC3Chart_LV2(orderData);
             swalMassage(`${message}`, 'success', 800);
         })
         .catch((error) => {
@@ -167,27 +168,59 @@ deleteOrdersBtn.addEventListener('click', (e) => {
 
 
 // C3.js 圖表設計
-function renderC3Chart() {
+function renderC3Chart_LV2(orderData) {
+
+    // 整理 C3 圖表要的資料 => ex: [['Louvre 雙人床架', 111100],['Antony 雙人床架', 12000]]
+    const orderDataObj = {};
+    orderData.forEach((order) => {
+        order.products.forEach((product) => {
+            // console.log(product);
+            const { title, price, quantity } = product;
+            if (orderDataObj[title] === undefined) {
+                orderDataObj[title] = price * quantity;
+            } else {
+                orderDataObj[title] += (price * quantity);
+            }
+        });
+    });
+    console.log(orderDataObj);
+
+    const orderChartData = Object
+        .keys(orderDataObj)
+        .map((product) => [product, orderDataObj[product]]);
+
+
+    // 降冪排列，取前三高營收，第四筆以後變其他
+    const reankSortArray = orderChartData.sort((a, b) => b[1] - a[1]);
+
+    console.log(reankSortArray.length);
+
+    if (reankSortArray.length > 3) {
+        let otherTotal = 0;
+        reankSortArray.forEach((item,index) => {
+            if (index > 2) {
+                otherTotal += reankSortArray[index][1];
+            };
+        });
+        reankSortArray.splice(3, reankSortArray.length - 1);
+        reankSortArray.push(['其他', otherTotal]);
+    };
+   
+
     c3.generate({
         bindto: '#chart', // HTML 元素綁定
         data: {
             type: "pie",
-            columns: [
-                ['Louvre 雙人床架', 1],
-                ['Antony 雙人床架', 2],
-                ['Anty 雙人床架', 3],
-                ['其他', 4],
-            ],
+            columns: reankSortArray,
             colors: {
-                "Louvre 雙人床架": "#DACBFF",
-                "Antony 雙人床架": "#9D7FEA",
-                "Anty 雙人床架": "#5434A7",
-                "其他": "#301E5F",
+                // "Louvre 雙人床架": "#DACBFF",
+                // "Antony 雙人床架": "#9D7FEA",
+                // "Anty 雙人床架": "#5434A7",
+                // "其他": "#301E5F",
             }
         },
     });
-}
-
+};
 
 
 
