@@ -193,8 +193,6 @@ function renderC3Chart_LV2(orderData) {
         reankSortArray.push(['其他', otherTotal]);
     };
 
-    console.log(reankSortArray[0][0]);
-
     c3.generate({
         bindto: '#chart', // HTML 元素綁定
         data: {
