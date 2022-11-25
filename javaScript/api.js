@@ -1,3 +1,5 @@
+import "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js";
+
 // 後台使用
 const auth_token = "weyzH1bcy7OlBO4rWQR44F07FE23";
 

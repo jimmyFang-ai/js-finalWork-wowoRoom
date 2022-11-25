@@ -1,3 +1,7 @@
+// 匯入 c3.js
+import 'https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js';
+import 'https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.js';
+
 
 // 匯入 共用工具
 import { swalMassage, timeDate } from './utils.js';
@@ -29,6 +33,8 @@ function getOrders() {
             orderData = res.data.orders;
             // 顯示訂單列表
             renderOrderLists(orderData);
+
+            renderC3Chart();
         })
         .catch((error) => {
             console.log(error);
@@ -160,29 +166,27 @@ deleteOrdersBtn.addEventListener('click', (e) => {
 
 
 
-// // C3.js 圖表設計
-// function renderC3Chart() {
-//     let chart = c3.generate({
-//         bindto: '#chart', // HTML 元素綁定
-//         data: {
-//             type: "pie",
-//             columns: [
-//                 ['Louvre 雙人床架', 1],
-//                 ['Antony 雙人床架', 2],
-//                 ['Anty 雙人床架', 3],
-//                 ['其他', 4],
-//             ],
-//             colors: {
-//                 "Louvre 雙人床架": "#DACBFF",
-//                 "Antony 雙人床架": "#9D7FEA",
-//                 "Anty 雙人床架": "#5434A7",
-//                 "其他": "#301E5F",
-//             }
-//         },
-//     });
-// }
-
-
+// C3.js 圖表設計
+function renderC3Chart() {
+    c3.generate({
+        bindto: '#chart', // HTML 元素綁定
+        data: {
+            type: "pie",
+            columns: [
+                ['Louvre 雙人床架', 1],
+                ['Antony 雙人床架', 2],
+                ['Anty 雙人床架', 3],
+                ['其他', 4],
+            ],
+            colors: {
+                "Louvre 雙人床架": "#DACBFF",
+                "Antony 雙人床架": "#9D7FEA",
+                "Anty 雙人床架": "#5434A7",
+                "其他": "#301E5F",
+            }
+        },
+    });
+}
 
 
 

@@ -39,7 +39,18 @@
         - [x] 刪除全部訂單
         - [x] 修改訂單狀態 
         - [x] 處理日期格式 (timestamp)
-    - [ ] C3.js 圖表設計
+    - [ ] C3.js ( LV2 )圖表設計
+        - [] 後台圖表設計
+            - [] 取得訂單資料
+            - [] 整理 C3.js 圖表所需要的資料格式
+            - [] 使用陣列方法 [sort](https://ithelp.ithome.com.tw/articles/10225733)，製作「降序」排列
+                - 將全品項營收按照 「降序」排列
+            - [] 篩選出前三名營收品項，其他 4~8 名都統整為「其它」
+            - [] 顯示 C3.js LV2 圖表
+                - 做全品項營收比重，類別含四項，篩選出前三名營收品項，其他 4~8 名都統整為「其它」
+        - [] 測試功能
+            - [] 測試 訂單列表功能 與 C3 圖表是否連動
+                - 當點擊訂單列表功能(單筆刪除、刪除全部)，圖表是否能更新。
   
 - [ ] 優化細節
     - [x] 使用者體驗
@@ -54,4 +65,4 @@
 - [axios](https://github.com/axios/axios)
 - [validate.js](https://validatejs.org/)
 - [sweetalert2](https://sweetalert2.github.io/)
-- [Bootstrap 5]([Bootstrap](https://bootstrap5.hexschool.com/docs/5.1/getting-started/introduction/))
+- [Bootstrap 5](https://bootstrap5.hexschool.com/docs/5.1/getting-started/introduction/)
