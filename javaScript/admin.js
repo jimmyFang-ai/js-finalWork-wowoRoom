@@ -224,7 +224,3 @@ function renderC3Chart_LV2(orderData) {
 
 
 
-
-
-
-
