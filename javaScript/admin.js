@@ -11,16 +11,14 @@ import * as api from './api.js';
 const orderList = document.querySelector('#orderList');
 const deleteOrdersBtn = document.querySelector('.discardAllBtn');
 
-// // 定義資料
+// 定義資料
 let orderData = [];
-
 
 // 初始化
 function adminInit() {
     getOrders();
 };
 adminInit();
-
 
 
 // 訂購表單 - 取得客戶訂單資料
@@ -38,12 +36,10 @@ function getOrders() {
         })
 };
 
-
 // 訂購表單 - 顯示客戶訂單列表
 function renderOrderLists(data) {
     // 顯示訂單列表資料
     orderList.innerHTML = data.map((order) => {
-
         //組訂購產品字串
         const orderProducts = order.products.map((product) => {
             return ` ${product.title} x ${product.quantity} <br>`;
@@ -72,8 +68,6 @@ function renderOrderLists(data) {
     }).join('');
 };
 
-
-
 // 訂購表單 - 功能整合(修改訂單狀態、刪除單一訂單)
 orderList.addEventListener('click', (e) => {
     e.preventDefault();
@@ -98,7 +92,6 @@ orderList.addEventListener('click', (e) => {
 });
 
 
-
 // 訂購表單 - 刪除單一訂單
 function deleteOrderItem(orderId) {
     api.apiDeleteOrder(orderId)
@@ -114,7 +107,6 @@ function deleteOrderItem(orderId) {
             console.log(error);
         })
 };
-
 
 
 // 訂購表單 - 修改全部狀態
@@ -135,7 +127,6 @@ function changeOrderStatus(orderId, checkStatus) {
             console.log(error);
         })
 };
-
 
 
 // 訂購表單 - 刪除全部訂單
@@ -166,7 +157,6 @@ deleteOrdersBtn.addEventListener('click', (e) => {
 });
 
 
-
 // C3.js 圖表設計
 function renderC3Chart_LV2(orderData) {
 
@@ -183,7 +173,7 @@ function renderC3Chart_LV2(orderData) {
             }
         });
     });
-    console.log(orderDataObj);
+
 
     const orderChartData = Object
         .keys(orderDataObj)
@@ -192,12 +182,9 @@ function renderC3Chart_LV2(orderData) {
 
     // 降冪排列，取前三高營收，第四筆以後變其他
     const reankSortArray = orderChartData.sort((a, b) => b[1] - a[1]);
-
-    console.log(reankSortArray.length);
-
     if (reankSortArray.length > 3) {
         let otherTotal = 0;
-        reankSortArray.forEach((item,index) => {
+        reankSortArray.forEach((item, index) => {
             if (index > 2) {
                 otherTotal += reankSortArray[index][1];
             };
@@ -205,20 +192,18 @@ function renderC3Chart_LV2(orderData) {
         reankSortArray.splice(3, reankSortArray.length - 1);
         reankSortArray.push(['其他', otherTotal]);
     };
-   
+
+    console.log(reankSortArray[0][0]);
 
     c3.generate({
         bindto: '#chart', // HTML 元素綁定
         data: {
             type: "pie",
             columns: reankSortArray,
-            colors: {
-                // "Louvre 雙人床架": "#DACBFF",
-                // "Antony 雙人床架": "#9D7FEA",
-                // "Anty 雙人床架": "#5434A7",
-                // "其他": "#301E5F",
-            }
         },
+        color: {
+            pattern: ["#DACBFF", "#9D7FEA", "#5434A7", "#301E5F"]
+        }
     });
 };
 
