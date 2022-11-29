@@ -49,8 +49,10 @@ function getProducts() {
 function renderProductsList(data) {
     productWrap.innerHTML = data.map((product) => {
         return `<li class="productCard" data-product-id="${product.id}">
-        <h4 class="productType">${product.category}</h4>
+        <span class="productType" style="z-index:1;">${product.category}</span>
+        <div class="overflow-hidden"> 
         <img src="${product.images}" alt="${product.title}">
+        </div>
         <a href="#" data-product-title="${product.title}" class="addCardBtn">加入購物車</a>
         <h3>${product.title}</h3>
         <del class="originPrice">NT$${utils.tothousands(product.origin_price)}</del>
@@ -82,8 +84,6 @@ productSelect.addEventListener('click', (e) => {
 // 產品 - 新增產品到購物車
 productWrap.addEventListener('click', (e) => {
     e.preventDefault();
-
-    // 只有點擊到加入購物車按鈕， 就取得 li 內的 產品 id
     if (e.target.getAttribute('class') !== "addCardBtn") return;
 
     // 產品數量(預設第一次新增產品的值)
@@ -269,7 +269,6 @@ function deleteCartItem(cartId, cartItemTitle) {
 // 購物車 - 清空購物車
 deleteCartsBtn.addEventListener('click', (e) => {
     e.preventDefault();
-
     if (cartsData.length === 0) {
         e.target.setAttribute("disabled", "");
         utils.swalMassage('購物車內已經沒有商品了', 'warning', 800);
@@ -395,7 +394,10 @@ function validateRules() {
 function formCheck(errors) {
     Object.keys(errors).forEach((keys) => {
         // console.log(document.querySelector(`[data-message=${keys}]`))
-        document.querySelector(`[data-message="${keys}"]`).textContent = errors[keys];
+        document.querySelector(`[data-message="${keys}"]`).innerHTML =
+            `<span class="material-icons me-2">
+        error_outline
+        </span> ${errors[keys]}`;
     });
 };
 
@@ -419,6 +421,9 @@ function creatOrderForm(customerFormInfo) {
             console.log(error);
         })
 };
+
+
+
 
 
 
