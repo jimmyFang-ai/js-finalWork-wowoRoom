@@ -1,0 +1,65 @@
+.input-group {
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    a {
+    display: block;
+    background:  #000000;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    padding: 0 10px;
+   }
+ 
+   input {
+     text-align: center;
+   }
+}
+
+
+
+/ 表單區塊
+.orderInfo {
+  padding: 60px 0;
+}
+
+.orderInfo-form {
+  padding: 0 15px;
+}
+
+.orderInfo-formGroup {
+  max-width: 365px;
+  margin: 0 auto 15px;
+}
+
+.orderInfo-label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.orderInfo-input {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid #CED4DA;
+  border-radius: 5px;
+  text-indent: 1rem;
+  margin-right: 10px;
+}
+
+
+.orderInfo-message {
+  // position: absolute;
+  white-space: nowrap;
+  left: 103%;
+  top: 50%;
+  -webkit-transform: translateY(20%);
+          transform: translateY(20%);
+  color: #C72424;
+}
+
+@media (max-width: 767px) {
+  .orderInfo-message {
+    position: static;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}

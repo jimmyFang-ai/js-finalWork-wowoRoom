@@ -1,0 +1,93 @@
+// 家具比較區塊表格
+.compare-table {
+    width: 65%;
+    margin: 0 auto;
+  }
+  
+  .compare-table th, .compare-table td {
+    text-align: center;
+    padding: 15px 0;
+  }
+  
+  .compare-table th {
+    font-size: 1.25rem;
+  }
+  
+  .compare-table tr {
+    border-bottom: 1px solid #B9B9B9;
+  }
+  
+  .compare-table tr td:first-child {
+    text-align: left;
+    font-size: 1.25rem;
+  }
+  
+  .compare-table .material-icons {
+    color: #6A33FF;
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+  }
+  
+  @media (max-width: 767px) {
+    .compare-table {
+      width: 500px;
+    }
+    .compare-table th, .compare-table td {
+      padding: 10px 0;
+    }
+    .compare-table th {
+      font-size: 1rem;
+    }
+    .compare-table tr td:first-child {
+      font-size: 1rem;
+    }
+}
+
+
+
+// 購物車表格
+.shoppingCart-table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    font-size: 1.25rem;
+}
+  
+.shoppingCart-table th, .shoppingCart-table td {
+    padding: 15px;
+    vertical-align: middle;
+}
+  
+.shoppingCart-table th {
+    text-align: left;
+}
+  
+  
+  
+.shoppingCart-table tr:first-child, .shoppingCart-table tr:last-child {
+    border-bottom: 0;
+}
+  
+@media (max-width: 767px) {
+    .shoppingCart-table {
+      width: 700px;
+    }
+}
+
+
+// 後台- 訂購表單表格
+.orderPage-table {
+  border: 1px solid #000000;
+  width: 100%;
+}
+
+.orderPage-table th, .orderPage-table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #000000;
+}
+
+@media (max-width: 1110px) {
+  .orderPage-table {
+    width: 1100px;
+  }
+}

@@ -12,7 +12,6 @@
 
 
 // 客製化 scss 
-
 // base
 @import "./base/reset";
 
@@ -20,6 +19,9 @@
 @import "./componets/custom-navBar";
 @import "./componets/banner";
 @import "./componets/custom-cards";
+@import "./componets/custom-tables";
+@import "./componets/custom-forms";
+@import "./componets/custom-btns";
 @import "./componets/loading";
 
 // pages

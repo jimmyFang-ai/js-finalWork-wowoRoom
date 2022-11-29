@@ -300,7 +300,7 @@ orderInfoBtn.addEventListener('click', (e) => {
     // 所有表單 inupt
     const orderInfoInputs = document.querySelectorAll('input[name],select[id=tradeWay]');
     const customerName = document.querySelector('#customerName');
-    const customerPhone = document.querySelector('#customerPhone');
+    const customerTel = document.querySelector('#customerTel');
     const customerEmail = document.querySelector('#customerEmail');
     const customerAddress = document.querySelector('#customerAddress');
     const tradeWay = document.querySelector('#tradeWay');
@@ -309,7 +309,7 @@ orderInfoBtn.addEventListener('click', (e) => {
     // 存放顧客表單欄位資訊的值
     const customerFormInfo = {
         "name": customerName.value,
-        "tel": customerPhone.value,
+        "tel": customerTel.value,
         "email": customerEmail.value,
         "address": customerAddress.value,
         "payment": tradeWay.value
@@ -353,7 +353,7 @@ function validateRules() {
                 message: "必填欄位"
             }
         },
-        "手機號碼": {
+        "電話": {
             presence: {
                 message: "是必填的欄位"
             },
