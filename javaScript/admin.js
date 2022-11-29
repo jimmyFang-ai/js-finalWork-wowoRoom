@@ -2,7 +2,7 @@
 import 'https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js';
 import 'https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.js';
 // 匯入 共用工具
-import { swalMassage, timeDate } from './utils.js';
+import * as utils from './utils.js';
 // 匯入 共用 API
 import * as api from './api.js';
 
@@ -23,6 +23,8 @@ adminInit();
 
 // 訂購表單 - 取得客戶訂單資料
 function getOrders() {
+    // loding 動畫載入
+    utils.toggleLoading(true);
     api.apiGetOrders()
         .then((res) => {
             orderData = res.data.orders;
@@ -30,6 +32,7 @@ function getOrders() {
             renderOrderLists(orderData);
             // 顯示 C3 圖表
             renderC3Chart_LV2(orderData);
+            utils.toggleLoading(false);
         })
         .catch((error) => {
             console.log(error);
@@ -57,7 +60,7 @@ function renderOrderLists(data) {
         <td>
             <p>${orderProducts}</p>
         </td>
-        <td>${timeDate(order.createdAt)}</td>
+        <td>${utils.timeDate(order.createdAt)}</td>
         <td>
             <button  class="btn btn-sm btn-primary"  data-order-status=${order.paid}  data-order-btn="changeStatus">${order.paid ? "已處理" : "未處理"}</button>
         </td>
@@ -94,6 +97,8 @@ orderList.addEventListener('click', (e) => {
 
 // 訂購表單 - 刪除單一訂單
 function deleteOrderItem(orderId) {
+    // loding 動畫載入
+    utils.toggleLoading(true);
     api.apiDeleteOrder(orderId)
         .then((res) => {
             orderData = res.data.orders;
@@ -101,7 +106,8 @@ function deleteOrderItem(orderId) {
             renderOrderLists(orderData);
             // 顯示 C3 圖表
             renderC3Chart_LV2(orderData);
-            swalMassage(`訂單編號: ${orderId} 已成功刪除!`, 'success', 800);
+            utils.toggleLoading(false);
+            utils.swalMassage(`訂單編號: ${orderId} 已成功刪除!`, 'success', 800);
         })
         .catch((error) => {
             console.log(error);
@@ -111,6 +117,8 @@ function deleteOrderItem(orderId) {
 
 // 訂購表單 - 修改全部狀態
 function changeOrderStatus(orderId, checkStatus) {
+    // loding 動畫載入
+    utils.toggleLoading(true);
     api.apiUpdateOrder({
         "data": {
             "id": orderId,
@@ -121,7 +129,8 @@ function changeOrderStatus(orderId, checkStatus) {
             orderData = res.data.orders;
             // 顯示訂單列表
             renderOrderLists(orderData);
-            swalMassage(`訂單編號: ${orderId} ，訂單狀態已修改!`, 'success', 800);
+            utils.toggleLoading(false);
+            utils.swalMassage(`訂單編號: ${orderId} ，訂單狀態已修改!`, 'success', 800);
         })
         .catch((error) => {
             console.log(error);
@@ -135,10 +144,12 @@ deleteOrdersBtn.addEventListener('click', (e) => {
 
     // 阻擋訂單為 0 ，不得點擊刪除全部訂單
     if (orderData.length === 0) {
-        swalMassage(`目前訂單列表沒有任何東西 RRR ((((；゜Д゜)))`, 'warning', 800);
+        utils.swalMassage(`目前訂單列表沒有任何東西 RRR ((((；゜Д゜)))`, 'warning', 800);
         return;
     };
 
+    // loding 動畫載入
+    utils.toggleLoading(true);
     api.apiDeleteAllOrders()
         .then((res) => {
             console.log(res);
@@ -149,7 +160,8 @@ deleteOrdersBtn.addEventListener('click', (e) => {
             renderOrderLists(orderData);
             // 顯示 C3 圖表
             renderC3Chart_LV2(orderData);
-            swalMassage(`${message}`, 'success', 800);
+            utils.toggleLoading(false);
+            utils.swalMassage(`${message}`, 'success', 800);
         })
         .catch((error) => {
             console.log(error);
@@ -204,9 +216,6 @@ function renderC3Chart_LV2(orderData) {
         }
     });
 };
-
-
-
 
 
 

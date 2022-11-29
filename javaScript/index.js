@@ -35,11 +35,10 @@ function getProducts() {
     utils.toggleLoading(true);
     api.apiGetProducts()
         .then((res) => {
-            console.log(res);
             productsData = res.data.products;
             renderProductsList(productsData);
             renderProductsOption(productsData);
-            setTimeout(() => utils.toggleLoading(false), 800);
+            utils.toggleLoading(false);
         })
         .catch((error) => {
             console.log(error);
@@ -52,7 +51,7 @@ function renderProductsList(data) {
         return `<li class="productCard" data-product-id="${product.id}">
         <h4 class="productType">${product.category}</h4>
         <img src="${product.images}" alt="${product.title}">
-        <a href="#" class="addCardBtn">加入購物車</a>
+        <a href="#" data-product-title="${product.title}" class="addCardBtn">加入購物車</a>
         <h3>${product.title}</h3>
         <del class="originPrice">NT$${utils.tothousands(product.origin_price)}</del>
         <p class="nowPrice">NT$${utils.tothousands(product.price)}</p>
@@ -64,10 +63,8 @@ function renderProductsList(data) {
 function renderProductsOption(data) {
     // 去除重複類別
     const options = Array.from(new Set(data.map((product) => product.category)));
-
     // 組下拉選項字串
     let optionsList = `<option value="全部" selected>全部</option>`;
-
     options.forEach((option) => {
         optionsList += `<option value="${option}">${option}</option>`
     });
@@ -93,6 +90,7 @@ productWrap.addEventListener('click', (e) => {
     let productQty = 1;
     //  產品 id
     let productId = e.target.closest('li').dataset.productId;
+    let productTitle = e.target.dataset.productTitle;
 
     // 比對購物車內是否存在相同產品
     cartsData.forEach((cart) => {
@@ -102,7 +100,7 @@ productWrap.addEventListener('click', (e) => {
     });
 
     // 新增產品到購物車
-    addCartItem(productId, productQty);
+    addCartItem(productId, productQty, productTitle);
 });
 
 // 購物車 - 取得購物車列表
@@ -152,7 +150,7 @@ function renderCartsList(data) {
     } else {
         cartsList.innerHTML = `<tr class="text-center">
         <td colspan="6">
-            <h3>購物車內沒有產品，趕快去選購吧!</h3>
+            <h3 class="text-secondary">購物車內沒有產品，趕快去選購吧!</h3>
         </td>
         </tr>`
     };
@@ -162,7 +160,9 @@ function renderCartsList(data) {
 };
 
 // 購物車 - 新增產品
-function addCartItem(productId, quantity) {
+function addCartItem(productId, quantity, productTitle) {
+    // loding 動畫載入
+    utils.toggleLoading(true);
     api.apiAddCart({
         "data": {
             productId,
@@ -171,9 +171,9 @@ function addCartItem(productId, quantity) {
     })
         .then((res) => {
             cartsData = res.data.carts;
-            console.log(cartsData);
             renderCartsList(cartsData);
-            utils.swalMassage("已加入購物車", "success", 800);
+            utils.toggleLoading(false);
+            utils.swalMassage(`${productTitle} 已加入購物車`, "success", 800);
         })
         .catch((error) => {
             console.log(error);
@@ -233,7 +233,6 @@ function changeCartItemQty(cartId, cartBtnVal, cartItemQty) {
 
     // // loding 動畫載入
     utils.toggleLoading(true);
-
     api.apiUpdateCart({
         "data": {
             "id": cartId,
@@ -243,7 +242,7 @@ function changeCartItemQty(cartId, cartBtnVal, cartItemQty) {
         .then((res) => {
             cartsData = res.data.carts;
             renderCartsList(cartsData);
-            setTimeout(() => utils.toggleLoading(false), 200);
+            utils.toggleLoading(false);
             utils.swalMassage('購物車商品數量已更新', 'success', 800);
         })
         .catch((error) => {
@@ -253,10 +252,13 @@ function changeCartItemQty(cartId, cartBtnVal, cartItemQty) {
 
 // 購物車 - 單筆刪除
 function deleteCartItem(cartId, cartItemTitle) {
+    // loding 動畫載入
+    utils.toggleLoading(true);
     api.apiDeleteCart(cartId)
         .then((res) => {
             cartsData = res.data.carts;
             renderCartsList(cartsData);
+            utils.toggleLoading(false);
             utils.swalMassage(`刪除${cartItemTitle} 產品成功 `, "success", 800)
         })
         .catch((error) => {
@@ -274,11 +276,14 @@ deleteCartsBtn.addEventListener('click', (e) => {
         return;
     };
 
+    // loding 動畫載入
+    utils.toggleLoading(true);
     api.apiDeleteAllCarts()
         .then((res) => {
             const { carts, message } = res.data
             cartsData = carts;
             renderCartsList(cartsData);
+            utils.toggleLoading(false);
             utils.swalMassage(message, 'success', 800);
         })
         .catch((error) => {
@@ -313,7 +318,7 @@ orderInfoBtn.addEventListener('click', (e) => {
 
     // change 驗證欄位
     orderInfoInputs.forEach((input) => {
-        input.addEventListener("change", function () {
+        input.addEventListener("change", () => {
             input.nextElementSibling.textContent = '';
             let errors = validate(orderInfoForm, validateRules()) || '';
             formCheck(errors);
@@ -388,7 +393,7 @@ function validateRules() {
 
 // 表單 -  驗證錯誤提示訊息
 function formCheck(errors) {
-    Object.keys(errors).forEach(function (keys) {
+    Object.keys(errors).forEach((keys) => {
         // console.log(document.querySelector(`[data-message=${keys}]`))
         document.querySelector(`[data-message="${keys}"]`).textContent = errors[keys];
     });
@@ -396,6 +401,8 @@ function formCheck(errors) {
 
 // 表單 - 送出購買訂單
 function creatOrderForm(customerFormInfo) {
+    // loding 動畫載入
+    utils.toggleLoading(true);
     api.apiAddOrder(
         {
             "data": {
@@ -404,8 +411,9 @@ function creatOrderForm(customerFormInfo) {
         }
     )
         .then((res) => {
-            utils.swalMassage('表單已送出', 'success', 800);
             getCarts();
+            utils.toggleLoading(false);
+            utils.swalMassage('表單已送出', 'success', 800);
         })
         .catch((error) => {
             console.log(error);
