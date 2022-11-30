@@ -74,7 +74,7 @@ function renderProductsOption(data) {
 };
 
 // 產品 -  篩選產品類別
-productSelect.addEventListener('click', (e) => {
+productSelect.addEventListener('change', (e) => {
     let productCategory = e.target.value;
     // 篩選產品類別
     const filterProducts = productsData.filter((product) => product.category === productCategory);
